@@ -5,7 +5,7 @@
 	$toEmailAdress = "laura.saad14@gmail.com";
 	$experimentCode = "LIBET-001 - WEB";
 	$subjectEmail = "EXPERIMENTAL DATA: " . experimentCode . " //" + date;
-	$domain = "gmail.com";
+	$domain = "34.197.104.123";
 	//</configuration>
 
 	//program variables
