@@ -25,8 +25,8 @@
 	}
 
 	$domainPolicy = strpos($referer, $domain);
-	if ($domainPolicy != false) 
-	{
+	//if ($domainPolicy != false) 
+	//{
 		$bodyEmail = $experimentCode . "," . $ipAddress . "," . $_POST["experimentData"];
 
 		if (mail($toEmailAddress, $subjectEmail, $bodyEmail, $extraHeaders)) 
@@ -37,9 +37,9 @@
 		{
 			echo("<p>Error sending data...</p>");
 		}
-	}
-	else
-	{
-		echo("<p>Domain policy error</p>");
-	}
+	//}
+	//else
+	//{
+	//	echo("<p>Domain policy error</p>");
+	//}
 ?>
