@@ -11,7 +11,7 @@ experiment.W = {
   password: '96',
   randomDelayMin: 1000,
   randomDelayMax: 1001,
-  postResultsURL: 'datasent.asp', //change this to whatever the server or host web address is
+  postResultsURL: 'http://34.197.104.123/datasent.php', //change this to whatever the server or host web address is
   generateCSV: true,//change to true if you want a csv at the end
   responseKey: ' ',
   sounds: {
