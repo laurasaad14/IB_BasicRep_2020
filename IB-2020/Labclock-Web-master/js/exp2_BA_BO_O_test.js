@@ -11,7 +11,7 @@ experiment.X = {
   password: '97',
   randomDelayMin: 1000,
   randomDelayMax: 1001,
-  postResultsURL: 'datasent.asp', 
+  postResultsURL: 'http://34.197.104.123/datasent.php', 
   generateCSV: true,
   responseKey: ' ',
   sounds: {
