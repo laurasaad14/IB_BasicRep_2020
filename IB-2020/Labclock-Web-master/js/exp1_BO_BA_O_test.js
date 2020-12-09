@@ -11,8 +11,8 @@ experiment.W = {
   password: '96',
   randomDelayMin: 1000,
   randomDelayMax: 1001,
-  postResultsURL: 'http://34.197.104.123/datasent.php', //change this to whatever the server or host web address is
-  generateCSV: true,//change to true if you want a csv at the end
+  postResultsURL: 'datasent.php', //change this to whatever the server or host web address is
+  generateCSV: false,//change to true if you want a csv at the end
   responseKey: ' ',
   sounds: {
     demo: [
@@ -54,7 +54,7 @@ experiment.W = {
     },
     {
       title: 'Enter Prolific ID',
-      content: '<p>Please enter your unique Prolific ID number in the box below.<br/><div id="text"><input type="text" id="ID_text" size="10" /></div><br/><br/><br/>Press Next when you are ready to move on to the consent form.</p>'
+      content: '<p>Please enter your unique Prolific ID number in the box below.<br/><div id="text"><input type="text" id="the_id_of_the_input_field" size="10" /></div><br/><br/><br/>Press Next when you are ready to move on to the consent form.</p>'
     },
     {
       title: 'ONLINE CONSENT TO TAKE PART IN A RESEARCH STUDY - Page 1',
