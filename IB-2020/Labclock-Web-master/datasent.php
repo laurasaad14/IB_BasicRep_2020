@@ -4,8 +4,8 @@
 	$fromEmailAddress = "laura.saad14@gmail.com";
 	$toEmailAddress = "laura.saad14@gmail.com";
 	$experimentCode = "LIBET-001 - WEB";
-	$subjectEmail = "EXPERIMENTAL DATA: " . experimentCode . " //" + date;
-	$domain = "34.197.104.123";
+	$subjectEmail = "EXPERIMENTAL DATA: " . experimentCode . " //" + date("Ymd");
+	$domain = "gmail.com"; // does this need to be the server domain?
 	//</configuration>
 
 	//program variables
