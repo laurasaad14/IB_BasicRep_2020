@@ -41,8 +41,11 @@ var labclock = {
   captionOK: document.getElementById('caption_ok'),
   captionNext: document.getElementById('caption_next'),
   captionAgree: document.getElementById('caption_agree'),
-  ID: document.getElementById('ID_text'), //added to save experiment ID
-  //checkbox: document.getElementById('myCheck'), //added for checkboxes
+  //ID: document.getElementById('ID_text'), //added to save experiment ID
+  checkbox: document.getElementById('myCheck'), //added for checkboxes
+  //checkbox2: document.getElementById('myCheck2'), //added for checkboxes
+  //checkbox3: document.getElementById('myCheck3'), //added for checkboxes
+  ID: document.getElementById('the_id_of_the_input_field'), //added for ID
   //Properties
   experiment: null,
   audioContext: null,
@@ -119,9 +122,6 @@ var labclock = {
     this.preScreenTitle.innerHTML = this.experiment.passwordScreen.title;
     this.preScreenContent.innerHTML = this.experiment.passwordScreen.content;
   },
-  //storeID: function () {
-   // var ID = document.getElementById('ID_text').value;
- // },
   startPhase: function () {
     this.trialsIndex = 0;
     this.startTrial(true);
@@ -419,6 +419,7 @@ var labclock = {
         xhr, storageItem;
     //results += ID + ';'; //need to get Prolific ID textbox value saved here
     results += this.experiment.code + ';';
+    results += this.userId + ';'; //store the prolific ID
     results += this.experiment.password + ';'; //saves the condition type password
     results += Date() + ';';
     storageItem = results;
@@ -434,6 +435,7 @@ var labclock = {
         results += this.experiment.phases[p].trials[t].toneTime + ';'; //delay startTrialAudioTimems of auditory stimulus for this trial
         results += this.experiment.phases[p].trials[t].guessTime + ';'; //subjective timing of the events = degrees x cycle / 360.
         results += this.experiment.phases[p].trials[t].angle + ';'; //stores the value in the textbox for attention checks
+
         resultsEnd += 'trial' + t + ';';
         resultsEnd += this.experiment.phases[p].trials[t].delay + ';'; // initial delay (ITI)
         resultsEnd += this.experiment.phases[p].trials[t].cycle + ';'; //duration of the spinning dot cycle for this trial
@@ -550,7 +552,7 @@ var labclock = {
         this.nextPhase();
         break;
     }
-  },
+  },  
   clickNext: function () {
     switch (this.state) {
       case this.STATE_PRE:
@@ -572,7 +574,7 @@ var labclock = {
         }
         break;
     }
-  },
+  },                  
   clickAgree: function () {
     switch (this.state) {
       case this.STATE_PRE:
