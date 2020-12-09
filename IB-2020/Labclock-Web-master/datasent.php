@@ -1,27 +1,27 @@
 <?php
 	//data to be filled
 	//<configuration>
-	$fromEmailAdress = "laura.saad14@gmail.com";
-	$toEmailAdress = "laura.saad14@gmail.com";
+	$fromEmailAddress = "laura.saad14@gmail.com";
+	$toEmailAddress = "laura.saad14@gmail.com";
 	$experimentCode = "LIBET-001 - WEB";
 	$subjectEmail = "EXPERIMENTAL DATA: " . experimentCode . " //" + date;
 	$domain = "34.197.104.123";
 	//</configuration>
 
 	//program variables
-	$extraHeaders = "From: " . $fromEmailAdress . "\r\n" .
-		"To: " . $toEmailAdress . "\r\n" .
+	$extraHeaders = "From: " . $fromEmailAddress . "\r\n" .
+		"To: " . $toEmailAddress . "\r\n" .
 		"Subject: " . $subjectEmail . "\r\n" .
 		"X-Mailer: PHP " . $domain;
 
 	$referer = $_SERVER['HTTP_REFERER'];
-	if (getenv(HTTP_X_FORWARDED_FOR))
+	if (getenv("HTTP_X_FORWARDED_FOR"))
 	{
-		$ipAddress = getenv(HTTP_X_FORWARDED_FOR);
+		$ipAddress = getenv("HTTP_X_FORWARDED_FOR");
 	}
 	else 
 	{
-		$ipAddress = getenv(REMOTE_ADDR);
+		$ipAddress = getenv("REMOTE_ADDR");
 	}
 
 	$domainPolicy = strpos($referer, $domain);
