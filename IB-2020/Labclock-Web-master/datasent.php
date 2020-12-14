@@ -27,7 +27,7 @@
 	$domainPolicy = strpos($referer, $domain);
 	//if ($domainPolicy != false) 
 	//{
-		$bodyEmail = $experimentCode . "," . $ipAddress . "," . $_POST["experimentData"];
+		$bodyEmail = $experimentCode . "," . $ipAddress . "," . $_POST["data"];
 
 		if (mail($toEmailAddress, $subjectEmail, $bodyEmail, $extraHeaders)) 
 		{
