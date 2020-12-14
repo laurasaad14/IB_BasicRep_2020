@@ -564,6 +564,14 @@ var labclock = {
           this.displayState();
         }
         break;
+        var inputs = document.getElementsByTagName('myCheck'); // new stuff starts here
+        var enabled = true;
+        for(var i = 0, l = inputs.length; i < l; ++i) { 
+          if (inputs[i].type == "checkbox" && !inputs[i].checked) {
+            enabled = false;
+          }
+        }
+        // enable the button if enabled is true - new stuff ends here
       case this.STATE_POST:
         this.postScreensIndex++;
         if (this.postScreensIndex < this.experiment.postScreens.length) {
