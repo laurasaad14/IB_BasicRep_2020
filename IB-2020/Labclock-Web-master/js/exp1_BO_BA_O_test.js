@@ -74,7 +74,7 @@ experiment.W = {
     },
     {
       title: 'ONLINE CONSENT TO TAKE PART IN A RESEARCH STUDY - Page 5',
-      content: '<p><input type= "checkbox"><label>If you have questions about your rights as a research subject, you can call the IRB Director at: New Brunswick/Piscataway ArtSci IRB (732)235-2866 or the Rutgers Human Subjects Protection Program at (973) 972-1149 in Newark.</label></p><br/><p><input type= "checkbox"><label>Please click HERE to print out this consent form if you would like a copy of it for your files.</label></p><br/><p><input type= "checkbox"><label>If you do not wish to take part in the research, close this website address. If you wish take part in the research, follow the directions below:</label></p><br/><p><strong>By beginning this research, I acknowledge that I am 18 years of age or older and have read and understand the information. I agree to take part in the research, with the knowledge that I am free to withdraw my participation in the research without penalty.</strong></p><br/><p>Click on the "I Agree" button to confirm your agreement to take part in the research.</p>'
+      content: '<p><input type= "checkbox"><label>If you have questions about your rights as a research subject, you can call the IRB Director at: New Brunswick/Piscataway ArtSci IRB (732)235-2866 or the Rutgers Human Subjects Protection Program at (973) 972-1149 in Newark.</label></p><br/><p><input type= "checkbox"><label>Please click <a href="https://www.dropbox.com/s/lnlizxci2t882iu/Pro2019000234_Saad_IRB_OnlineConsent_2020modification.docx?dl=0" target="_blank">HERE</a> to print out this consent form if you would like a copy of it for your files.</label></p><br/><p><input type= "checkbox"><label>If you do not wish to take part in the research, close this website address. If you wish take part in the research, follow the directions below:</label></p><br/><p><strong>By beginning this research, I acknowledge that I am 18 years of age or older and have read and understand the information. I agree to take part in the research, with the knowledge that I am free to withdraw my participation in the research without penalty.</strong></p><br/><p>Click on the "I Agree" button to confirm your agreement to take part in the research.</p>'
     },
     {
       title: 'Experiment Instructions',
@@ -99,7 +99,7 @@ experiment.W = {
         //{ cycle: 2560, tone: Math.random() * (2560 - 1280) + 1280, nopress: true, response: 'outcome' },
         { cycle: 2560, tone: Math.random() * (2560 - 1280) + 1280, nopress: true, response: 'text' },
         //{ cycle: 2560, tone: Math.random() * (2560 - 1280) + 1280, nopress: true, response: 'outcome' },
-        { cycle: 2560, tone: Math.random() * (2560 - 1280) + 1280, nopress: true, response: 'outcome' },
+        //{ cycle: 2560, tone: Math.random() * (2560 - 1280) + 1280, nopress: true, response: 'outcome' },
        // { cycle: 2560, tone: Math.random() * (2560 - 1280) + 1280, nopress: true, response: 'outcome' },
        // { cycle: 2560, tone: Math.random() * (2560 - 1280) + 1280, nopress: true, response: 'outcome' },
        // { cycle: 2560, tone: Math.random() * (2560 - 1280) + 1280, nopress: true, response: 'outcome' },
@@ -126,7 +126,7 @@ experiment.W = {
            // { cycle: 2560 },
            // { cycle: 2560 },
            // { cycle: 2560 },
-            { cycle: 2560, response: 'text' },
+            //{ cycle: 2560, response: 'text' },
             //{ cycle: 2560 },
             //{ cycle: 2560 }
         ],
@@ -151,7 +151,7 @@ experiment.W = {
         //{ cycle: 2560, tone: 250, response: 'outcome' },
         //{ cycle: 2560, tone: 750, response: 'outcome' },
         //{ cycle: 2560, tone: 750 },
-        { cycle: 2560, tone: 250 },
+       // { cycle: 2560, tone: 250 },
         { cycle: 2560, tone: 250, response: 'text' },
         //{ cycle: 2560, tone: 750 },
         //{ cycle: 2560, tone: 250 },
@@ -174,7 +174,7 @@ experiment.W = {
         trials: [
           //{ cycle: 2560, tone: 250, response: 'outcome' },
           //{ cycle: 2560, tone: 750, response: 'outcome' },
-          { cycle: 2560, tone: 250, response: 'outcome' },
+         // { cycle: 2560, tone: 250, response: 'outcome' },
           //{ cycle: 2560, tone: 750, response: 'outcome' },
           //{ cycle: 2560, tone: 250, response: 'outcome' },
           //{ cycle: 2560, tone: 750, response: 'outcome' },
@@ -222,7 +222,7 @@ experiment.W = {
           //{ cycle: 2560, tone: 750 },
           //{ cycle: 2560, tone: 250 },
           //{ cycle: 2560, tone: 750 },
-          { cycle: 2560, tone: 250 },
+         // { cycle: 2560, tone: 250 },
           //{ cycle: 2560, tone: 750 },
           //{ cycle: 2560, tone: 250 }
         ],
@@ -250,7 +250,7 @@ experiment.W = {
           //{ cycle: 2560, tone: 250 },
           //{ cycle: 2560, tone: 750 },
           //{ cycle: 2560, tone: 250 },
-          { cycle: 2560, tone: 750 },
+         // { cycle: 2560, tone: 750 },
          // { cycle: 2560, tone: 750, response: 'text' },
           //{ cycle: 2560, tone: 250 },
           //{ cycle: 2560, tone: 750 },
