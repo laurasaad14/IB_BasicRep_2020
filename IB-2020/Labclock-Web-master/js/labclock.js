@@ -556,6 +556,11 @@ var labclock = {
   clickNext: function () {
     switch (this.state) {
       case this.STATE_PRE:
+        // Check to see if we're moving away from the screen with 
+        // the ID input, and if so, store that for later reference
+        if (this.preScreensIndex === 1) {
+           this.userId = document.getElementById('the_id_of_the_input_field').value;
+        }
         this.preScreensIndex++;
         if (this.preScreensIndex < this.experiment.preScreens.length) {
           this.showPreScreen(this.preScreensIndex);
