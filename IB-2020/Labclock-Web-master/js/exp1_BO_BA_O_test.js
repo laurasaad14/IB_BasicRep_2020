@@ -43,8 +43,8 @@ experiment.W = {
     errorAudio: 'Your browser does not support Web Audio API and therefore it will not be possible to play experiment\'s sounds.',
     recommendBrowser: 'Please <a href="http://google.com/chrome">download the latest version of Google Chrome</a> and try again.',
     errorAJAX: 'Unfortunately there has been an error while sending your results. Please contact us to solve the problem.',
-    //downloadTitle: 'Download data',
-    //downloadData: 'Click here to download experiment\'s data in CSV.',
+    downloadTitle: 'Download data',
+    downloadData: 'Click here to download experiment\'s data in CSV.',
     end: 'Please close the experiment\'s window.'
   },
   preScreens: [
