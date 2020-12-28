@@ -1,4 +1,7 @@
 var labclock = {
+	//Extra variables
+	resolutionWidth: 0,
+	resolutionHeight: 0,
   //State definition consts
   STATE_PRE: 0,
   STATE_PASSWORD: 1,
@@ -417,10 +420,10 @@ var labclock = {
     var results = '',
         resultsEnd = 'Full results;',
         xhr, storageItem;
-    //results += ID + ';'; //need to get Prolific ID textbox value saved here
     results += this.experiment.code + ';';
     results += this.userId + ';'; //store the prolific ID
     results += this.experiment.password + ';'; //saves the condition type password
+    results += this.resolutionWidth + ',' + this.resolutioHeight + ';'; //saves the window dimensions in pixels
     results += Date() + ';';
     storageItem = results;
     results += navigator.userAgent + ';';
@@ -445,13 +448,15 @@ var labclock = {
         resultsEnd += this.experiment.phases[p].trials[t].keypressTrialTimes + ';'; //list of all space bar key presses
         resultsEnd += this.experiment.phases[p].trials[t].toneTime + ';'; //delay in ms of auditory stimulus for this trial
         resultsEnd += this.experiment.phases[p].trials[t].guessTime + ';'; //subjective timing of the events = degrees x cycle / 360.
-        //resultsEnd += this.experiment.phases[p].trials[t].sounds.feedback.duration + ';'; //duration of the sound
+        //resultsEnd += this.experiment.sounds.feedback[i].duration + ';'; //duration of the sound
         resultsEnd += this.experiment.phases[p].trials[t].startTrialTime + ';'; //beginning of trial
         resultsEnd += this.experiment.phases[p].trials[t].endTrialTime + ';'; // end of trial
         resultsEnd += this.experiment.phases[p].trials[t].startTrialAudioTime + ';'; //timestamp of beginning of trial
       } //
     }
     results += resultsEnd;
+		results += '\n';
+		// send email
     if (this.experiment.postResultsURL) {
       xhr = new XMLHttpRequest();
       xhr.open('POST', this.experiment.postResultsURL, true); // true because handles the request asynchronously (this is preferred)
@@ -515,6 +520,10 @@ var labclock = {
     }
   },
   clickOK: function () {
+		if (this.checkCheckBoxes() == false) {
+			alert('Please check all of the checkboxes!');
+			return;
+		}
     switch (this.state) {
       case this.STATE_PASSWORD:
         var c = document.getElementById('pre_password_text').value;
@@ -553,14 +562,32 @@ var labclock = {
         break;
     }
   },  
+	checkCheckBoxes: function () {
+		var inputs = document.getElementsByTagName('input');
+		var allChecked = true;
+		for (var i = 0, l = inputs.length; i < l; ++i) {
+			if (inputs[i].type == "checkbox" && !inputs[i].checked) {
+				allChecked = false;
+			}
+		}
+		return allChecked;
+	},
   clickNext: function () {
     switch (this.state) {
       case this.STATE_PRE:
         // Check to see if we're moving away from the screen with 
         // the ID input, and if so, store that for later reference
         if (this.preScreensIndex === 1) {
-           this.userId = document.getElementById('the_id_of_the_input_field').value;
+          this.userId = document.getElementById('the_id_of_the_input_field').value;
+					if (this.userId == "") {
+						alert('Please input a user id!');
+						break;
+					}
         }
+				else if (this.checkCheckBoxes() == false) {
+					alert('Please check all of the checkboxes!');
+					break;
+				}
         this.preScreensIndex++;
         if (this.preScreensIndex < this.experiment.preScreens.length) {
           this.showPreScreen(this.preScreensIndex);
@@ -569,14 +596,6 @@ var labclock = {
           this.displayState();
         }
         break;
-        var inputs = document.getElementsByTagName('myCheck'); // new stuff starts here
-        var enabled = true;
-        for(var i = 0, l = inputs.length; i < l; ++i) { 
-          if (inputs[i].type == "checkbox" && !inputs[i].checked) {
-            enabled = false;
-          }
-        }
-        // enable the button if enabled is true - new stuff ends here
       case this.STATE_POST:
         this.postScreensIndex++;
         if (this.postScreensIndex < this.experiment.postScreens.length) {
@@ -591,6 +610,10 @@ var labclock = {
   clickAgree: function () {
     switch (this.state) {
       case this.STATE_PRE:
+				if (this.checkCheckBoxes() == false) {
+					alert('Please check all of the checkboxes!');
+					break;
+				}
         this.preScreensIndex++;
         if (this.preScreensIndex < this.experiment.preScreens.length) {
           this.showPreScreen(this.preScreensIndex);
@@ -700,6 +723,8 @@ var labclock = {
       errorHTML += this.experiment.messages.errorAudio + '</p><br/>';
       errorHTML += '<p>' + this.experiment.messages.recommendBrowser + '</p>';
     }
+		this.resolutionWidth = document.documentElement.clientWidth;
+		this.resolutioHeight = document.documentElement.clientHeight;
     if ((document.documentElement.clientWidth < 850) || (document.documentElement.clientHeight < 700)) {
       resolution = true;
       errorHTML += this.experiment.messages.errorResolution + '</p>';

@@ -11,8 +11,8 @@ experiment.W = {
   password: '96',
   randomDelayMin: 1000,
   randomDelayMax: 1001,
-  postResultsURL: 'datasent.php', //change this to whatever the server or host web address is
-  generateCSV: true,//change to true if you want a csv at the end
+  postResultsURL: 'datasave.php', //change this to whatever the server or host web address is
+  generateCSV: false,//change to true if you want a csv at the end
   responseKey: ' ',
   sounds: {
     demo: [
