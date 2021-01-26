@@ -439,7 +439,6 @@ var labclock = {
         results += this.experiment.phases[p].trials[t].toneTime + ';'; //delay startTrialAudioTimems of auditory stimulus for this trial
         results += this.experiment.phases[p].trials[t].guessTime + ';'; //subjective timing of the events = degrees x cycle / 360.
         results += this.experiment.phases[p].trials[t].angle + ';'; //stores the value in the textbox for attention checks
-
         resultsEnd += 'trial' + t + ';';
         resultsEnd += this.experiment.phases[p].trials[t].delay + ';'; // initial delay (ITI)
         resultsEnd += this.experiment.phases[p].trials[t].cycle + ';'; //duration of the spinning dot cycle for this trial
@@ -600,7 +599,7 @@ var labclock = {
       case this.STATE_POST:
         // Check to see if we're moving away from the screen with 
         // the headphone input, and if so, store that for later reference
-        if (this.postScreensIndex === 1) {
+        if (this.postScreensIndex === 0) {
           this.headphone = document.getElementById('the_id_of_the_input_field').value;
 					if (this.headphone == "") {
 						alert('Please respond YES or NO!');

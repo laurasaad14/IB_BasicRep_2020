@@ -12,7 +12,7 @@ experiment.Z = {
   randomDelayMin: 1000,
   randomDelayMax: 1001,
   postResultsURL: 'datasave.php', //change this to whatever the server or host web address is
-  generateCSV: true,//change to true if you want a csv at the end
+  generateCSV: false,//change to true if you want a csv at the end
   responseKey: ' ',
   sounds: {
     demo: [
@@ -111,7 +111,7 @@ experiment.Z = {
           //{ cycle: 2560, tone: 750, response: 'outcome' },
           //{ cycle: 2560, tone: 750 },
          // { cycle: 2560, tone: 250 },
-          { cycle: 2560, tone: 250, response: 'text' },
+         // { cycle: 2560, tone: 250, response: 'text' },
           //{ cycle: 2560, tone: 750 },
           //{ cycle: 2560, tone: 250 },
           //{ cycle: 2560, tone: 750 },
@@ -229,7 +229,7 @@ experiment.Z = {
         trials: [
          // { cycle: 2560, tone: Math.random() * (2560 - 1280) + 2560, nopress: true, response: 'outcome' },
           //{ cycle: 2560, tone: Math.random() * (2560 - 1280) + 2560, nopress: true, response: 'outcome' },
-          { cycle: 2560, tone: Math.random() * (2560 - 1280) + 2560, nopress: true, response: 'text' },
+         // { cycle: 2560, tone: Math.random() * (2560 - 1280) + 2560, nopress: true, response: 'text' },
           //{ cycle: 2560, tone: Math.random() * (2560 - 1280) + 2560, nopress: true, response: 'outcome' },
           //{ cycle: 2560, tone: Math.random() * (2560 - 1280) + 2560, nopress: true, response: 'outcome' },
          // { cycle: 2560, tone: Math.random() * (2560 - 1280) + 2560, nopress: true, response: 'outcome' },
@@ -250,7 +250,7 @@ experiment.Z = {
           progress: true,
           scramble: true,
           trials: [
-              { cycle: 2560 },
+              //{ cycle: 2560 },
               //{ cycle: 2560 },
              // { cycle: 2560 },
              // { cycle: 2560 },
