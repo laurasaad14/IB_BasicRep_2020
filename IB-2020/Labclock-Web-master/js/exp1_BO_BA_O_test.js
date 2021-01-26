@@ -12,7 +12,7 @@ experiment.W = {
   randomDelayMin: 1000,
   randomDelayMax: 1001,
   postResultsURL: 'datasave.php', //change this to whatever the server or host web address is
-  generateCSV: false,//change to true if you want a csv at the end
+  generateCSV: true,//change to true if you want a csv at the end
   responseKey: ' ',
   sounds: {
     demo: [
@@ -78,7 +78,7 @@ experiment.W = {
     },
     {
       title: 'Experiment Instructions',
-      content: '<p>Please check the boxes to indicate you have read and understand each section.</p><br/><p><input type= "checkbox"><label>At the beginning of each trial you will see a “GET READY” message. The dot on the clock on your screen will then begin rotating. This will be followed by a tone that you will hear at a random time.</label></p><br/><p><input type= "checkbox"><label><strong>Your task is to pay attention to where the dot was on the clock when you <mark class="blue">heard the tone.</mark></strong></label></p><br/><p><input type= "checkbox"><label>At the end of each trial, you will be asked to recall the position of the dot on the clock when you <mark class="blue"><strong>heard the tone</mark></strong>. To do that, simply use your mouse to click the position on the clock where you thought the dot was when you heard the tone.</label></p><br/><p><input type= "checkbox"><label>You may move the dot around as many times as you would like. Once you are satisfied with your response, click “OK” and the next trial will start.</label></p><br/><p>Press "Next" to move to the next screen where you will see a clock in demo mode to help you familiarize yourself with the task.</p>'
+      content: '<p><strong>Please ensure that you are in a quiet location before beginning the experiment.</strong> Please check the boxes to indicate you have read and understand each section.</p><br/><p><input type= "checkbox"><label>At the beginning of each trial you will see a “GET READY” message. The dot on the clock on your screen will then begin rotating. This will be followed by a tone that you will hear at a random time.</label></p><br/><p><input type= "checkbox"><label><strong>Your task is to pay attention to where the dot was on the clock when you <mark class="blue">heard the tone.</mark></strong></label></p><br/><p><input type= "checkbox"><label>At the end of each trial, you will be asked to recall the position of the dot on the clock when you <mark class="blue"><strong>heard the tone</mark></strong>. To do that, simply use your mouse to click the position on the clock where you thought the dot was when you heard the tone.</label></p><br/><p><input type= "checkbox"><label>You may move the dot around as many times as you would like. Once you are satisfied with your response, click “OK” and the next trial will start.</label></p><br/><p>Press "Next" to move to the next screen where you will see a clock in demo mode to help you familiarize yourself with the task.</p>'
     },
     {
       title: 'Demo',
@@ -95,17 +95,17 @@ experiment.W = {
       progress: true,
       scramble: true,
       trials: [
-       // { cycle: 2560, tone: Math.random() * (2560 - 1280) + 1280, nopress: true, response: 'outcome' },
-        //{ cycle: 2560, tone: Math.random() * (2560 - 1280) + 1280, nopress: true, response: 'outcome' },
-        { cycle: 2560, tone: Math.random() * (2560 - 1280) + 1280, nopress: true, response: 'text' },
-        //{ cycle: 2560, tone: Math.random() * (2560 - 1280) + 1280, nopress: true, response: 'outcome' },
-        //{ cycle: 2560, tone: Math.random() * (2560 - 1280) + 1280, nopress: true, response: 'outcome' },
-       // { cycle: 2560, tone: Math.random() * (2560 - 1280) + 1280, nopress: true, response: 'outcome' },
-       // { cycle: 2560, tone: Math.random() * (2560 - 1280) + 1280, nopress: true, response: 'outcome' },
-       // { cycle: 2560, tone: Math.random() * (2560 - 1280) + 1280, nopress: true, response: 'outcome' },
-       // { cycle: 2560, tone: Math.random() * (2560 - 1280) + 1280, nopress: true, response: 'outcome' },
-        //{ cycle: 2560, tone: Math.random() * (2560 - 1280) + 1280, nopress: true, response: 'outcome' },
-        //{ cycle: 2560, tone: Math.random() * (2560 - 1280) + 1280, nopress: true, response: 'outcome' }
+       // { cycle: 2560, tone: Math.random() * (2560 - 1280) + 2560, nopress: true, response: 'outcome' },
+        //{ cycle: 2560, tone: Math.random() * (2560 - 1280) + 2560, nopress: true, response: 'outcome' },
+        { cycle: 2560, tone: Math.random() * (2560 - 1280) + 2560, nopress: true, response: 'text' },
+        //{ cycle: 2560, tone: Math.random() * (2560 - 1280) + 2560, nopress: true, response: 'outcome' },
+        //{ cycle: 2560, tone: Math.random() * (2560 - 1280) + 2560, nopress: true, response: 'outcome' },
+       // { cycle: 2560, tone: Math.random() * (2560 - 1280) + 2560, nopress: true, response: 'outcome' },
+       // { cycle: 2560, tone: Math.random() * (2560 - 1280) + 2560, nopress: true, response: 'outcome' },
+       // { cycle: 2560, tone: Math.random() * (2560 - 1280) + 2560, nopress: true, response: 'outcome' },
+       // { cycle: 2560, tone: Math.random() * (2560 - 1280) + 2560, nopress: true, response: 'outcome' },
+        //{ cycle: 2560, tone: Math.random() * (2560 - 1280) + 2560, nopress: true, response: 'outcome' },
+        //{ cycle: 2560, tone: Math.random() * (2560 - 1280) + 2560, nopress: true, response: 'outcome' }
         
       ],
       screen: {
@@ -260,14 +260,18 @@ experiment.W = {
         ],
         screen: {
           title: 'End of the experiment',
-          content: '<p>Press \'OK\' to finish.</p>'
+          content: '<p>Press \'OK\' to move to the final question and proceed back to Prolific.</p>'
         }
       }
   ],
   postScreens: [
     {
+      title: 'Headphones',
+      content: '<p><strong>Were you using or wearing headphones while completing this experiment?</strong></p><br/><p>Please enter YES or NO into the text box below.<br/><div id="text"><input type="text" id="the_id_of_the_input_field" size="10" /></div><br/><br/><br/>Press \'Next\' to move on to the final screen.</p>',
+    },
+    {
       title: 'Thank you!',
-      content: '<p>Your responses will be added to those of the other participants and analyzed statistically.</p><br/><p>Thank you very much for your participation.</p><br/><p>If you are interested in these kind of studies, please visit the Experiments Tab on our lab website: <a href="https://sites.rutgers.edu/ccm-lab/">HCCLAB WEBSITE</a>.</p>'
+      content: '<p>Your responses will be added to those of the other participants and analyzed statistically.</p><br/><p>Thank you very much for your participation.</p><br/><p>If you are interested in these kind of studies, please visit the Experiments Tab on our lab website: <a href="https://sites.rutgers.edu/ccm-lab/">HCCLAB WEBSITE</a>.</p><br/><br/><strong>Please click <a href="https://app.prolific.co/submissions/complete?cc=F79B354C">HERE</a> to go back to Prolific.</strong></p><br/><p><strong>*You must click on the link above in order to receive payment for your participation.*</strong></p>'
     }
   ]
 };

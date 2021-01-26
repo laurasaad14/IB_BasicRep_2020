@@ -424,6 +424,7 @@ var labclock = {
     results += this.userId + ';'; //store the prolific ID
     results += this.experiment.password + ';'; //saves the condition type password
     results += this.resolutionWidth + ',' + this.resolutioHeight + ';'; //saves the window dimensions in pixels
+    results += this.headphone + ';'; //saves the response to the headphone question
     results += Date() + ';';
     storageItem = results;
     results += navigator.userAgent + ';';
@@ -597,6 +598,15 @@ var labclock = {
         }
         break;
       case this.STATE_POST:
+        // Check to see if we're moving away from the screen with 
+        // the headphone input, and if so, store that for later reference
+        if (this.postScreensIndex === 1) {
+          this.headphone = document.getElementById('the_id_of_the_input_field').value;
+					if (this.headphone == "") {
+						alert('Please respond YES or NO!');
+						break;
+          }
+        }
         this.postScreensIndex++;
         if (this.postScreensIndex < this.experiment.postScreens.length) {
           this.showPostScreen(this.postScreensIndex);
@@ -766,7 +776,7 @@ var labclock = {
   },
   start: function () {
     this.setButtonsListeners();
-    this.selectExperiment(true); //set it to false to select the group manually
+    this.selectExperiment(false); //set it to false to select the group manually
     this.state = this.STATE_PRE;
     this.displayState();
     if(this.sanityChecks()) {
