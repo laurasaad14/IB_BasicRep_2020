@@ -423,7 +423,7 @@ var labclock = {
     results += this.experiment.code + ';';
     results += this.userId + ';'; //store the prolific ID
     results += this.experiment.password + ';'; //saves the condition type password
-    results += this.resolutionWidth + ',' + this.resolutioHeight + ';'; //saves the window dimensions in pixels
+    results += this.resolutionWidth + ';' + this.resolutioHeight + ';'; //saves the window dimensions in pixels
     results += this.headphone + ';'; //saves the response to the headphone question
     results += Date() + ';';
     storageItem = results;
@@ -432,13 +432,13 @@ var labclock = {
       results += this.experiment.phases[p].description + ';';
       resultsEnd += this.experiment.phases[p].description + ';';
       for (var t = 0, lt = this.experiment.phases[p].trials.length; t < lt; t++) {
-        results += 'trial' + t + ';'; 
-        results += this.experiment.phases[p].trials[t].response + ';'; //trial type (action or outcome)
-        results += this.experiment.phases[p].trials[t].tone + ';'; // time of the delay between action and outcome
-        results += this.experiment.phases[p].trials[t].keypressTrialTimes + ';'; //list of all space bar key presses
-        results += this.experiment.phases[p].trials[t].toneTime + ';'; //delay startTrialAudioTimems of auditory stimulus for this trial
-        results += this.experiment.phases[p].trials[t].guessTime + ';'; //subjective timing of the events = degrees x cycle / 360.
-        results += this.experiment.phases[p].trials[t].angle + ';'; //stores the value in the textbox for attention checks
+        //results += 'trial' + t + ';'; 
+       // results += this.experiment.phases[p].trials[t].response + ';'; //trial type (action or outcome)
+       // results += this.experiment.phases[p].trials[t].tone + ';'; // time of the delay between action and outcome
+        //results += this.experiment.phases[p].trials[t].keypressTrialTimes + ';'; //list of all space bar key presses
+        //results += this.experiment.phases[p].trials[t].toneTime + ';'; //delay startTrialAudioTimems of auditory stimulus for this trial
+        //results += this.experiment.phases[p].trials[t].guessTime + ';'; //subjective timing of the events = degrees x cycle / 360.
+        //results += this.experiment.phases[p].trials[t].angle + ';'; //stores the value in the textbox for attention checks
         resultsEnd += 'trial' + t + ';';
         resultsEnd += this.experiment.phases[p].trials[t].delay + ';'; // initial delay (ITI)
         resultsEnd += this.experiment.phases[p].trials[t].cycle + ';'; //duration of the spinning dot cycle for this trial
@@ -449,6 +449,7 @@ var labclock = {
         resultsEnd += this.experiment.phases[p].trials[t].toneTime + ';'; //delay in ms of auditory stimulus for this trial
         resultsEnd += this.experiment.phases[p].trials[t].guessTime + ';'; //subjective timing of the events = degrees x cycle / 360.
         //resultsEnd += this.experiment.sounds.feedback[i].duration + ';'; //duration of the sound
+        resultsEnd += this.experiment.phases[p].trials[t].angle + ';'; //stores the value in the textbox for attention checks
         resultsEnd += this.experiment.phases[p].trials[t].startTrialTime + ';'; //beginning of trial
         resultsEnd += this.experiment.phases[p].trials[t].endTrialTime + ';'; // end of trial
         resultsEnd += this.experiment.phases[p].trials[t].startTrialAudioTime + ';'; //timestamp of beginning of trial
