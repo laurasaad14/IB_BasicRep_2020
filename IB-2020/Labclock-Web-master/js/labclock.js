@@ -428,8 +428,8 @@ var labclock = {
       } else {
         this.expScreenCaption.innerHTML = this.experiment.messages.trialSelecting;
         this.setWhenSelectingListeners();
-      }
-    } else {
+    }
+   } else {
       this.dot.style.webkitAnimationPlayState = 'paused';
       this.dot.style.mozAnimationPlayState = 'paused';
       this.dot.style.animationPlayState = 'paused';
@@ -562,8 +562,8 @@ var labclock = {
         break;
       case this.STATE_TRIAL_SELECTING:
         var ok = true;
-        if (this.experiment.phases[this.phasesIndex].trials[this.trialsIndex].response === 'text' || 'text2' || 'text3' || 'text4' || 'text5' || 'text6') {
-          // angle stores the value of the textbox, not the corresponding angle when using response: 'text'
+        if (this.experiment.phases[this.phasesIndex].trials[this.trialsIndex].response = 'text'|| 'text2' || 'text3' || 'text4' || 'text5' || 'text6') {
+          // angle stores the value of the textbox, not the corresponding angle when using response: 'textX'
           this.experiment.phases[this.phasesIndex].trials[this.trialsIndex].angle = this.expScreenTextboxValue.value;
           // guessTime stores the estimation in ms considering the cycle time
           if (isNaN(parseFloat(this.expScreenTextboxValue.value))) {
@@ -573,7 +573,6 @@ var labclock = {
             this.experiment.phases[this.phasesIndex].trials[this.trialsIndex].guessTime = this.expScreenTextboxValue.value * this.experiment.phases[this.phasesIndex].trials[this.trialsIndex].cycle / 60;
             this.expScreenTextbox.style.display = 'none';
             ok = true;
-
           }
         } else {
           this.unsetWhenSelectingListeners();
@@ -810,7 +809,7 @@ var labclock = {
   },
   start: function () {
     this.setButtonsListeners();
-    this.selectExperiment(true); //set it to false to select the group manually
+    this.selectExperiment(false); //set it to false to select the group manually
     this.state = this.STATE_PRE;
     this.displayState();
     if(this.sanityChecks()) {
