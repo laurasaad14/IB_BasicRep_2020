@@ -393,7 +393,32 @@ var labclock = {
       this.dot.style.mozAnimationPlayState = 'paused';
       this.dot.style.animationPlayState = 'paused';
       if (this.experiment.phases[this.phasesIndex].trials[this.trialsIndex].response === 'text') {
-        this.expScreenCaption.innerHTML = this.experiment.messages.trialSelectingText;
+        this.expScreenCaption.innerHTML = this.experiment.messages.trialSelectingText; 
+        this.expScreenTextboxValue.value = '';
+        this.expScreenTextbox.style.display = 'block';
+        this.showButtons(false, true, false);
+      } else if (this.experiment.phases[this.phasesIndex].trials[this.trialsIndex].response === 'text2') {
+        this.expScreenCaption.innerHTML = this.experiment.messages.trialSelectingText2;
+        this.expScreenTextboxValue.value = '';
+        this.expScreenTextbox.style.display = 'block';
+        this.showButtons(false, true, false);
+      } else if (this.experiment.phases[this.phasesIndex].trials[this.trialsIndex].response === 'text3') {
+        this.expScreenCaption.innerHTML = this.experiment.messages.trialSelectingText3;
+        this.expScreenTextboxValue.value = '';
+        this.expScreenTextbox.style.display = 'block';
+        this.showButtons(false, true, false);
+      } else if (this.experiment.phases[this.phasesIndex].trials[this.trialsIndex].response === 'text4') {
+        this.expScreenCaption.innerHTML = this.experiment.messages.trialSelectingText4;
+        this.expScreenTextboxValue.value = '';
+        this.expScreenTextbox.style.display = 'block';
+        this.showButtons(false, true, false);
+      } else if (this.experiment.phases[this.phasesIndex].trials[this.trialsIndex].response === 'text5') {
+        this.expScreenCaption.innerHTML = this.experiment.messages.trialSelectingText5;
+        this.expScreenTextboxValue.value = '';
+        this.expScreenTextbox.style.display = 'block';
+        this.showButtons(false, true, false);
+      } else if (this.experiment.phases[this.phasesIndex].trials[this.trialsIndex].response === 'text6') {
+        this.expScreenCaption.innerHTML = this.experiment.messages.trialSelectingText6;
         this.expScreenTextboxValue.value = '';
         this.expScreenTextbox.style.display = 'block';
         this.showButtons(false, true, false);
@@ -537,7 +562,7 @@ var labclock = {
         break;
       case this.STATE_TRIAL_SELECTING:
         var ok = true;
-        if (this.experiment.phases[this.phasesIndex].trials[this.trialsIndex].response === 'text') {
+        if (this.experiment.phases[this.phasesIndex].trials[this.trialsIndex].response === 'text' || 'text2' || 'text3' || 'text4' || 'text5' || 'text6') {
           // angle stores the value of the textbox, not the corresponding angle when using response: 'text'
           this.experiment.phases[this.phasesIndex].trials[this.trialsIndex].angle = this.expScreenTextboxValue.value;
           // guessTime stores the estimation in ms considering the cycle time
@@ -785,7 +810,7 @@ var labclock = {
   },
   start: function () {
     this.setButtonsListeners();
-    this.selectExperiment(false); //set it to false to select the group manually
+    this.selectExperiment(true); //set it to false to select the group manually
     this.state = this.STATE_PRE;
     this.displayState();
     if(this.sanityChecks()) {

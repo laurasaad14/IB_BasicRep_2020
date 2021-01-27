@@ -38,6 +38,11 @@ experiment.X = {
     trialSelecting: 'Please place the dot where it was on the clock when you <mark class="red"><strong>PRESSED THE SPACEBAR</mark></strong>. Please do your best to be as accurate as possible. You may move the dot around as many times as you would like. Click "OK" when you are ready to move forward.',
     trialSelectingOutcome: 'Please place the dot where it was on the clock when you <mark class="blue"><strong>HEARD THE TONE</strong></mark>. Please do your best to be as accurate as possible. You may move the dot around as many times as you would like. Click "OK" when you are ready to move forward.',
     trialSelectingText: 'This is an attention check.<br/>Please enter a number greater than 100 in the text box below.<br/>Press OK when you are ready to move forward.',
+    trialSelectingText2: 'This is an attention check.<br/>Please enter a number less than 100 in the text box below.<br/>Press OK when you are ready to move forward.',
+    trialSelectingText3: 'This is an attention check.<br/>Please enter a number between 10 and 20 in the text box below.<br/>Press OK when you are ready to move forward.',
+    trialSelectingText4: 'This is an attention check.<br/>Please enter a number between 250 and 300 in the text box below.<br/>Press OK when you are ready to move forward.',
+    trialSelectingText5: 'This is an attention check.<br/>Please enter a number less than 70 in the text box below.<br/>Press OK when you are ready to move forward.',
+    trialSelectingText6: 'This is an attention check.<br/>Please enter a number greater than 180 in the text box below.<br/>Press OK when you are ready to move forward.',
     errorCSSAnimations: 'Your browser do not support CSS Animations.',
     errorResolution: 'Screen resolution is too small.</p><br/><p>Please press F11 to switch to full screen and then F5 to reload.',
     errorAudio: 'Your browser does not support Web Audio API and therefore it will not be possible to play experiment\'s sounds.',
@@ -105,7 +110,7 @@ experiment.X = {
            { cycle: 2560 },
            { cycle: 2560 },
            { cycle: 2560 },
-           { cycle: 2560 },
+           { cycle: 2560, response: 'text' },
            { cycle: 2560 },
            { cycle: 2560 },
            { cycle: 2560 }
@@ -122,7 +127,7 @@ experiment.X = {
       trials: [
           {cycle: 2560, tone: Math.random() * (2560 - 1280) + 2560, nopress: true, response: 'outcome' },
           { cycle: 2560, tone: Math.random() * (2560 - 1280) + 2560, nopress: true, response: 'outcome' },
-          { cycle: 2560, tone: Math.random() * (2560 - 1280) + 2560, nopress: true, response: 'text' },
+          { cycle: 2560, tone: Math.random() * (2560 - 1280) + 2560, nopress: true, response: 'text2' },
           { cycle: 2560, tone: Math.random() * (2560 - 1280) + 2560, nopress: true, response: 'outcome' },
           { cycle: 2560, tone: Math.random() * (2560 - 1280) + 2560, nopress: true, response: 'outcome' },
           { cycle: 2560, tone: Math.random() * (2560 - 1280) + 2560, nopress: true, response: 'outcome' },
@@ -135,7 +140,7 @@ experiment.X = {
       ],
       screen: {
         title: 'Instructions for Part 3',
-        content: '<p>Please check each box to indicate that you have read and understood the instructions.</p><br/><p><input type= "checkbox"><label>In this last section, you will be asked to press the spacebar at a time of your choosing after the dot on the clock has completed one full rotation. Your keypress will cause the computer to play a tone.</label></p><br/><p><input type= "checkbox"><label><strong>Your task will be to pay attention to where the dot was on the clock when you <mark class="red">pressed the spacebar</mark> AND when you <mark class="blue">heard the tone.</mark></strong></label></p><br/><p><input type= "checkbox"><label>At the end of each trial, instructions at the top of the page will ask you to recall the position of the dot on the clock <strong>EITHER when you <mark class="red">pressed the spacebar</mark> OR when you <mark class="blue">heard the tone</mark></strong>. To do that, simply use your mouse to click the position on the clock where you thought the dot was for the relevant event.</label></p><br/><p><input type= "checkbox"><label>You may move the dot around as many times as you would like. Once you are satisfied with your response, click “OK” and the next trial will start.</label></p><br/><p>Press "OK" to start the last part of the experiment.</p>',
+        content: '<p>Please check each box to indicate that you have read and understood the instructions.</p><br/><p><input type= "checkbox"><label>In this last section, <strong>you will be asked to press the spacebar at a time of your choosing after the dot on the clock has completed one full rotation.</strong> Your keypress will cause the computer to play a tone.</label></p><br/><p><input type= "checkbox"><label><strong>Your task will be to pay attention to where the dot was on the clock when you <mark class="red">pressed the spacebar</mark> AND when you <mark class="blue">heard the tone.</mark></strong></label></p><br/><p><input type= "checkbox"><label>At the end of each trial, instructions at the top of the page will ask you to recall the position of the dot on the clock <strong>EITHER when you <mark class="red">pressed the spacebar</mark> OR when you <mark class="blue">heard the tone</mark></strong>. To do that, simply use your mouse to click the position on the clock where you thought the dot was for the relevant event.</label></p><br/><p><input type= "checkbox"><label>You may move the dot around as many times as you would like. Once you are satisfied with your response, click “OK” and the next trial will start.</label></p><br/><p>Press "OK" to start the last part of the experiment.</p>',
       }
   },
   {
@@ -151,23 +156,19 @@ experiment.X = {
         { cycle: 2560, tone: 750, response: 'outcome' },
         { cycle: 2560, tone: 250, response: 'outcome' },
         { cycle: 2560, tone: 750, response: 'outcome' },
-        { cycle: 2560, tone: 250, response: 'outcome' },
-        { cycle: 2560, tone: 750, response: 'outcome' },
         { cycle: 2560, tone: 750 },
         { cycle: 2560, tone: 250 },
-        { cycle: 2560, tone: 250, response: 'text' },
+        { cycle: 2560, tone: 250, response: 'text3' },
         { cycle: 2560, tone: 750 },
         { cycle: 2560, tone: 250 },
         { cycle: 2560, tone: 750 },
         { cycle: 2560, tone: 250 },
         { cycle: 2560, tone: 750 },
         { cycle: 2560, tone: 250 },
-        { cycle: 2560, tone: 750 },
-        { cycle: 2560, tone: 250 }
     ],
     screen: {
       title: 'BREAK - Instructions Repeated',
-      content: '<p>You will be asked to press the spacebar at a time of your choosing after the dot on the clock has completed one full rotation. Your keypress will cause the computer to play a tone.</p><br/><p><strong>Your task will be to pay attention to where the dot was on the clock when you <mark class="red">pressed the spacebar</mark> AND when you <mark class="blue">heard the tone.</mark></strong></p><br/><p>At the end of each trial, instructions at the top of the page will ask you to recall the position of the dot on the clock <strong>EITHER when you <mark class="red">pressed the spacebar</mark> OR when you <mark class="blue">heard the tone</mark></strong>. To do that, simply use your mouse to click the position on the clock where you thought the dot was for the relevant event.</p><br/><p>You may move the dot around as many times as you would like. Once you are satisfied with your response, click “OK” and the next trial will start. There will be three breaks during this part of the task. Please try your best to stay focused.</p><br/><br/><p>Press "OK" to start the next block.</p>',
+      content: '<p><strong>You will be asked to press the spacebar at a time of your choosing after the dot on the clock has completed one full rotation.</strong> Your keypress will cause the computer to play a tone.</p><br/><p><strong>Your task will be to pay attention to where the dot was on the clock when you <mark class="red">pressed the spacebar</mark> AND when you <mark class="blue">heard the tone.</mark></strong></p><br/><p>At the end of each trial, instructions at the top of the page will ask you to recall the position of the dot on the clock <strong>EITHER when you <mark class="red">pressed the spacebar</mark> OR when you <mark class="blue">heard the tone</mark></strong>. To do that, simply use your mouse to click the position on the clock where you thought the dot was for the relevant event.</p><br/><p>You may move the dot around as many times as you would like. Once you are satisfied with your response, click “OK” and the next trial will start. There will be three breaks during this part of the task. Please try your best to stay focused.</p><br/><br/><p>Press "OK" to start the next block.</p>',
       }  
   },
   {
@@ -181,11 +182,9 @@ experiment.X = {
         { cycle: 2560, tone: 750, response: 'outcome' },
         { cycle: 2560, tone: 250, response: 'outcome' },
         { cycle: 2560, tone: 750, response: 'outcome' },
-        { cycle: 2560, tone: 750, response: 'text' },
+        { cycle: 2560, tone: 750, response: 'text4' },
         { cycle: 2560, tone: 250, response: 'outcome' },
         { cycle: 2560, tone: 750, response: 'outcome' },
-        { cycle: 2560, tone: 250, response: 'outcome' },
-        { cycle: 2560, tone: 750, response: 'outcome' },
         { cycle: 2560, tone: 750 },
         { cycle: 2560, tone: 250 },
         { cycle: 2560, tone: 750 },
@@ -194,12 +193,10 @@ experiment.X = {
         { cycle: 2560, tone: 250 },
         { cycle: 2560, tone: 750 },
         { cycle: 2560, tone: 250 },
-        { cycle: 2560, tone: 750 },
-        { cycle: 2560, tone: 250 }
       ],
       screen: {
         title: 'BREAK - Instructions Repeated',
-        content: '<p>You will be asked to press the spacebar at a time of your choosing after the dot on the clock has completed one full rotation. Your keypress will cause the computer to play a tone.</p><br/><p><strong>Your task will be to pay attention to where the dot was on the clock when you <mark class="red">pressed the spacebar</mark> AND when you <mark class="blue">heard the tone.</mark></strong></p><br/><p>At the end of each trial, instructions at the top of the page will ask you to recall the position of the dot on the clock <strong>EITHER when you <mark class="red">pressed the spacebar</mark> OR when you <mark class="blue">heard the tone</mark></strong>. To do that, simply use your mouse to click the position on the clock where you thought the dot was for the relevant event.</p><br/><p>You may move the dot around as many times as you would like. Once you are satisfied with your response, click “OK” and the next trial will start. There will be three breaks during this part of the task. Please try your best to stay focused.</p><br/><br/><p>Press "OK" to start the next block.</p>',
+        content: '<p><strong>You will be asked to press the spacebar at a time of your choosing after the dot on the clock has completed one full rotation.</strong> Your keypress will cause the computer to play a tone.</p><br/><p><strong>Your task will be to pay attention to where the dot was on the clock when you <mark class="red">pressed the spacebar</mark> AND when you <mark class="blue">heard the tone.</mark></strong></p><br/><p>At the end of each trial, instructions at the top of the page will ask you to recall the position of the dot on the clock <strong>EITHER when you <mark class="red">pressed the spacebar</mark> OR when you <mark class="blue">heard the tone</mark></strong>. To do that, simply use your mouse to click the position on the clock where you thought the dot was for the relevant event.</p><br/><p>You may move the dot around as many times as you would like. Once you are satisfied with your response, click “OK” and the next trial will start. There will be three breaks during this part of the task. Please try your best to stay focused.</p><br/><br/><p>Press "OK" to start the next block.</p>',
       }
     },
     {
@@ -213,11 +210,9 @@ experiment.X = {
         { cycle: 2560, tone: 750, response: 'outcome' },
         { cycle: 2560, tone: 250, response: 'outcome' },
         { cycle: 2560, tone: 750, response: 'outcome' },
-        { cycle: 2560, tone: 750, response: 'text' },
+        { cycle: 2560, tone: 750, response: 'text5' },
         { cycle: 2560, tone: 250, response: 'outcome' },
         { cycle: 2560, tone: 750, response: 'outcome' },
-        { cycle: 2560, tone: 250, response: 'outcome' },
-        { cycle: 2560, tone: 750, response: 'outcome' },
         { cycle: 2560, tone: 750 },
         { cycle: 2560, tone: 250 },
         { cycle: 2560, tone: 750 },
@@ -226,12 +221,10 @@ experiment.X = {
         { cycle: 2560, tone: 250 },
         { cycle: 2560, tone: 750 },
         { cycle: 2560, tone: 250 },
-        { cycle: 2560, tone: 750 },
-        { cycle: 2560, tone: 250 }
       ],
       screen: {
         title: 'BREAK - Instructions Repeated',
-        content: '<p>You will be asked to press the spacebar at a time of your choosing after the dot on the clock has completed one full rotation. Your keypress will cause the computer to play a tone.</p><br/><p><strong>Your task will be to pay attention to where the dot was on the clock when you <mark class="red">pressed the spacebar</mark> AND when you <mark class="blue">heard the tone.</mark></strong></p><br/><p>At the end of each trial, instructions at the top of the page will ask you to recall the position of the dot on the clock <strong>EITHER when you <mark class="red">pressed the spacebar</mark> OR when you <mark class="blue">heard the tone</mark></strong>. To do that, simply use your mouse to click the position on the clock where you thought the dot was for the relevant event.</p><br/><p>You may move the dot around as many times as you would like. Once you are satisfied with your response, click “OK” and the next trial will start. There will be three breaks during this part of the task. Please try your best to stay focused.</p><br/><br/><p>Press "OK" to start the next block.</p>',
+        content: '<p><strong>You will be asked to press the spacebar at a time of your choosing after the dot on the clock has completed one full rotation.</strong> Your keypress will cause the computer to play a tone.</p><br/><p><strong>Your task will be to pay attention to where the dot was on the clock when you <mark class="red">pressed the spacebar</mark> AND when you <mark class="blue">heard the tone.</mark></strong></p><br/><p>At the end of each trial, instructions at the top of the page will ask you to recall the position of the dot on the clock <strong>EITHER when you <mark class="red">pressed the spacebar</mark> OR when you <mark class="blue">heard the tone</mark></strong>. To do that, simply use your mouse to click the position on the clock where you thought the dot was for the relevant event.</p><br/><p>You may move the dot around as many times as you would like. Once you are satisfied with your response, click “OK” and the next trial will start. There will be three breaks during this part of the task. Please try your best to stay focused.</p><br/><br/><p>Press "OK" to start the next block.</p>',
       }
     },
     {
@@ -247,19 +240,15 @@ experiment.X = {
         { cycle: 2560, tone: 750, response: 'outcome' },
         { cycle: 2560, tone: 250, response: 'outcome' },
         { cycle: 2560, tone: 750, response: 'outcome' },
-        { cycle: 2560, tone: 250, response: 'outcome' },
-        { cycle: 2560, tone: 750, response: 'outcome' },
         { cycle: 2560, tone: 750 },
         { cycle: 2560, tone: 250 },
-        { cycle: 2560, tone: 250, response: 'text' },
+        { cycle: 2560, tone: 250, response: 'text6' },
         { cycle: 2560, tone: 750 },
         { cycle: 2560, tone: 250 },
         { cycle: 2560, tone: 750 },
         { cycle: 2560, tone: 250 },
         { cycle: 2560, tone: 750 },
         { cycle: 2560, tone: 250 },
-        { cycle: 2560, tone: 750 },
-        { cycle: 2560, tone: 250 }
     ],
       screen: {
         title: 'End of the experiment',
@@ -270,7 +259,7 @@ experiment.X = {
 postScreens: [
   {
     title: 'Thank you!',
-    content: '<p>Your responses will be added to those of the other participants and analyzed statistically.</p><br/><p>Thank you very much for your participation.</p><br/><p>If you are interested in these kind of studies, please visit the Experiments Tab on our lab website: <a href="https://sites.rutgers.edu/ccm-lab/">HCCLAB WEBSITE</a>.</p><br/><br/><strong>Please click <a href="https://app.prolific.co/submissions/complete?cc=F79B354C">HERE</a> to go back to Prolific.</strong></p><br/><p><strong>*You must click on the link above in order to receive payment for your participation.*</strong></p>'
+    content: '<p>Your responses will be added to those of the other participants and analyzed statistically.</p><br/><p>Thank you very much for your participation.</p><br/><p>If you are interested in these kind of studies, please visit our lab website to learn more about our research: <a href="https://sites.rutgers.edu/ccm-lab/">HCCLAB WEBSITE</a>.</p><br/><br/><strong><mark class="blue">Please click <a href="https://app.prolific.co/submissions/complete?cc=F79B354C">HERE</a> to go back to Prolific.</mark></strong></p><br/><p><strong>*You must click on the link above in order to receive payment for your participation.*</strong></p><br/><p><strong>IF YOU ARE A FRIEND DOING THIS TASK - JUST EXIT OUT OF THE SCREEN. THANK YOU!!!!!</strong></p>'
   }
 ]
 };
