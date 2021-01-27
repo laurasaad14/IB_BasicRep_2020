@@ -418,7 +418,7 @@ var labclock = {
   },
   storeExperimentData: function () {
     var results = '',
-        resultsEnd = 'Full results;',
+        resultsEnd = '', //old code: resultsEnd = 'Full results;',
         xhr, storageItem;
     results += this.experiment.code + ';';
     results += this.userId + ';'; //store the prolific ID
@@ -429,7 +429,7 @@ var labclock = {
     storageItem = results;
     results += navigator.userAgent + ';';
     for (var p = 0, lp = this.experiment.phases.length; p < lp; p++) {
-      results += this.experiment.phases[p].description + ';';
+      //results += this.experiment.phases[p].description + ';';
       resultsEnd += this.experiment.phases[p].description + ';';
       for (var t = 0, lt = this.experiment.phases[p].trials.length; t < lt; t++) {
         //results += 'trial' + t + ';'; 
@@ -439,7 +439,7 @@ var labclock = {
         //results += this.experiment.phases[p].trials[t].toneTime + ';'; //delay startTrialAudioTimems of auditory stimulus for this trial
         //results += this.experiment.phases[p].trials[t].guessTime + ';'; //subjective timing of the events = degrees x cycle / 360.
         //results += this.experiment.phases[p].trials[t].angle + ';'; //stores the value in the textbox for attention checks
-        resultsEnd += 'trial' + t + ';';
+        resultsEnd += t + ';'; // old code: resultsEnd += 'trial' + t + ';';
         resultsEnd += this.experiment.phases[p].trials[t].delay + ';'; // initial delay (ITI)
         resultsEnd += this.experiment.phases[p].trials[t].cycle + ';'; //duration of the spinning dot cycle for this trial
         resultsEnd += this.experiment.phases[p].trials[t].cycleTime + ';'; //duration of the spinning dot cycle
@@ -585,6 +585,15 @@ var labclock = {
 						break;
 					}
         }
+        // Check to see if we're moving away from the screen with 
+        // the headphone input, and if so, store that for later reference
+        if (this.preScreensIndex === 7) {
+          this.headphone = document.getElementById('the_id_of_the_input_field').value;
+					if (this.headphone == "") {
+						alert('Please respond YES or NO!');
+						break;
+          }
+        }
 				else if (this.checkCheckBoxes() == false) {
 					alert('Please check all of the checkboxes!');
 					break;
@@ -600,13 +609,13 @@ var labclock = {
       case this.STATE_POST:
         // Check to see if we're moving away from the screen with 
         // the headphone input, and if so, store that for later reference
-        if (this.postScreensIndex === 0) {
-          this.headphone = document.getElementById('the_id_of_the_input_field').value;
-					if (this.headphone == "") {
-						alert('Please respond YES or NO!');
-						break;
-          }
-        }
+        //if (this.postScreensIndex === 0) {
+          //this.headphone = document.getElementById('the_id_of_the_input_field').value;
+					//if (this.headphone == "") {
+					//	alert('Please respond YES or NO!');
+					//	break;
+         // }
+       // }
         this.postScreensIndex++;
         if (this.postScreensIndex < this.experiment.postScreens.length) {
           this.showPostScreen(this.postScreensIndex);
