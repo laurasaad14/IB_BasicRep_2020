@@ -12,7 +12,7 @@ experiment.Z = {
   randomDelayMin: 1000,
   randomDelayMax: 1001,
   postResultsURL: 'datasave.php', //change this to whatever the server or host web address is
-  generateCSV: false,//change to true if you want a csv at the end
+  generateCSV: true,//change to true if you want a csv at the end
   responseKey: ' ',
   sounds: {
     demo: [
@@ -23,7 +23,7 @@ experiment.Z = {
       { } //file: 'media/500-880Hz_44100Hz_16bit_1000ms.wav'
     ],
     feedback: [
-      { duration: 200 /*in msec*/, pitch: 1000 /*in Hz*/ },
+      { duration: 100 /*in msec*/, pitch: 1000 /*in Hz*/ },
       { duration: 100 /*in msec*/, pitch: 500 /*in Hz*/ }
     ]
   },
@@ -230,7 +230,7 @@ experiment.Z = {
           { cycle: 2560, tone: Math.random() * (2560 - 1280) + 2560, nopress: true, response: 'outcome' },
           { cycle: 2560, tone: Math.random() * (2560 - 1280) + 2560, nopress: true, response: 'outcome' },
           { cycle: 2560, tone: Math.random() * (2560 - 1280) + 2560, nopress: true, response: 'outcome' },
-          { cycle: 2560, tone: Math.random() * (2560 - 1280) + 2560, nopress: true, response: 'outcome' }
+          { cycle: 2560, tone: Math.random() * (2560 - 1280) + 2560, nopress: true, response: 'outcome' },
           
         ],
         screen: {
@@ -253,7 +253,7 @@ experiment.Z = {
               { cycle: 2560 },
               { cycle: 2560, response: 'text6' },
               { cycle: 2560 },
-              { cycle: 2560 }
+              { cycle: 2560 },
           ],
           screen: {
             title: 'End of the experiment',

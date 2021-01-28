@@ -12,7 +12,7 @@ experiment.W = {
   randomDelayMin: 1000,
   randomDelayMax: 1001,
   postResultsURL: 'datasave.php', //change this to whatever the server or host web address is
-  generateCSV: false,//change to true if you want a csv at the end - OK BUTTON DOESNT WORK WHEN THIS IS TRUE FOR SOME REASON
+  generateCSV: true,//change to true if you want a csv at the end - OK BUTTON DOESNT WORK WHEN THIS IS TRUE FOR SOME REASON
   responseKey: ' ',
   sounds: {
     demo: [
@@ -23,7 +23,7 @@ experiment.W = {
       { }
     ],
     feedback: [
-      { duration: 200 /*in msec*/, pitch: 1000 /*in Hz*/ },
+      { duration: 100 /*in msec*/, pitch: 1000 /*in Hz*/ },
       { duration: 100 /*in msec*/, pitch: 500 /*in Hz*/ }
     ]
   },

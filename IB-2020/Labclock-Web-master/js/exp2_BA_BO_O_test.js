@@ -12,7 +12,7 @@ experiment.X = {
   randomDelayMin: 1000,
   randomDelayMax: 1001,
   postResultsURL: 'datasave.php', //change this to whatever the server or host web address is
-  generateCSV: false, //change to true if you want a csv at the end
+  generateCSV: true, //change to true if you want a csv at the end
   responseKey: ' ',
   sounds: {
     demo: [
@@ -23,7 +23,7 @@ experiment.X = {
       { } //file: 'media/500-880Hz_44100Hz_16bit_1000ms.wav' 
     ],
     feedback: [
-      { duration: 200 /*in msec*/, pitch: 1000 /*in Hz*/ },
+      { duration: 100 /*in msec*/, pitch: 1000 /*in Hz*/ },
       { duration: 100 /*in msec*/, pitch: 500 /*in Hz*/ }
     ]
   },
