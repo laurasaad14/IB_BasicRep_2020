@@ -562,9 +562,69 @@ var labclock = {
         break;
       case this.STATE_TRIAL_SELECTING:
         var ok = true;
-        if (this.experiment.phases[this.phasesIndex].trials[this.trialsIndex].response = 'text'|| 'text2' || 'text3' || 'text4' || 'text5' || 'text6') {
+        if (this.experiment.phases[this.phasesIndex].trials[this.trialsIndex].response == 'text') { // || 'text2' || 'text3' || 'text4' || 'text5' || 'text6' || 'text3' || 'text4' || 'text5' || 'text6') {
           // angle stores the value of the textbox, not the corresponding angle when using response: 'textX'
           this.experiment.phases[this.phasesIndex].trials[this.trialsIndex].angle = this.expScreenTextboxValue.value;
+          // guessTime stores the estimation in ms considering the cycle time
+          if (isNaN(parseFloat(this.expScreenTextboxValue.value))) {
+            this.experiment.phases[this.phasesIndex].trials[this.trialsIndex].guessTime = 0;
+            ok = false;
+          } else {
+            this.experiment.phases[this.phasesIndex].trials[this.trialsIndex].guessTime = this.expScreenTextboxValue.value * this.experiment.phases[this.phasesIndex].trials[this.trialsIndex].cycle / 60;
+            this.expScreenTextbox.style.display = 'none';
+            ok = true;
+          }
+      } else if (this.experiment.phases[this.phasesIndex].trials[this.trialsIndex].response == 'text2') { 
+        // angle stores the value of the textbox, not the corresponding angle when using response: 'textX'
+        this.experiment.phases[this.phasesIndex].trials[this.trialsIndex].angle = this.expScreenTextboxValue.value;
+        // guessTime stores the estimation in ms considering the cycle time
+        if (isNaN(parseFloat(this.expScreenTextboxValue.value))) {
+          this.experiment.phases[this.phasesIndex].trials[this.trialsIndex].guessTime = 0;
+          ok = false;
+        } else {
+          this.experiment.phases[this.phasesIndex].trials[this.trialsIndex].guessTime = this.expScreenTextboxValue.value * this.experiment.phases[this.phasesIndex].trials[this.trialsIndex].cycle / 60;
+          this.expScreenTextbox.style.display = 'none';
+          ok = true;
+        }
+      } else if (this.experiment.phases[this.phasesIndex].trials[this.trialsIndex].response == 'text3') { 
+        // angle stores the value of the textbox, not the corresponding angle when using response: 'textX'
+        this.experiment.phases[this.phasesIndex].trials[this.trialsIndex].angle = this.expScreenTextboxValue.value;
+        // guessTime stores the estimation in ms considering the cycle time
+        if (isNaN(parseFloat(this.expScreenTextboxValue.value))) {
+          this.experiment.phases[this.phasesIndex].trials[this.trialsIndex].guessTime = 0;
+          ok = false;
+        } else {
+          this.experiment.phases[this.phasesIndex].trials[this.trialsIndex].guessTime = this.expScreenTextboxValue.value * this.experiment.phases[this.phasesIndex].trials[this.trialsIndex].cycle / 60;
+          this.expScreenTextbox.style.display = 'none';
+          ok = true;
+        }
+      } else if (this.experiment.phases[this.phasesIndex].trials[this.trialsIndex].response == 'text4') { 
+        // angle stores the value of the textbox, not the corresponding angle when using response: 'textX'
+        this.experiment.phases[this.phasesIndex].trials[this.trialsIndex].angle = this.expScreenTextboxValue.value;
+        // guessTime stores the estimation in ms considering the cycle time
+        if (isNaN(parseFloat(this.expScreenTextboxValue.value))) {
+          this.experiment.phases[this.phasesIndex].trials[this.trialsIndex].guessTime = 0;
+          ok = false;
+        } else {
+          this.experiment.phases[this.phasesIndex].trials[this.trialsIndex].guessTime = this.expScreenTextboxValue.value * this.experiment.phases[this.phasesIndex].trials[this.trialsIndex].cycle / 60;
+          this.expScreenTextbox.style.display = 'none';
+          ok = true;
+        }
+      } else if (this.experiment.phases[this.phasesIndex].trials[this.trialsIndex].response == 'text5') { 
+        // angle stores the value of the textbox, not the corresponding angle when using response: 'textX'
+        this.experiment.phases[this.phasesIndex].trials[this.trialsIndex].angle = this.expScreenTextboxValue.value;
+        // guessTime stores the estimation in ms considering the cycle time
+        if (isNaN(parseFloat(this.expScreenTextboxValue.value))) {
+          this.experiment.phases[this.phasesIndex].trials[this.trialsIndex].guessTime = 0;
+          ok = false;
+        } else {
+          this.experiment.phases[this.phasesIndex].trials[this.trialsIndex].guessTime = this.expScreenTextboxValue.value * this.experiment.phases[this.phasesIndex].trials[this.trialsIndex].cycle / 60;
+          this.expScreenTextbox.style.display = 'none';
+          ok = true;
+        }
+      } else if (this.experiment.phases[this.phasesIndex].trials[this.trialsIndex].response == 'text6') { 
+        // angle stores the value of the textbox, not the corresponding angle when using response: 'textX'
+        this.experiment.phases[this.phasesIndex].trials[this.trialsIndex].angle = this.expScreenTextboxValue.value;
           // guessTime stores the estimation in ms considering the cycle time
           if (isNaN(parseFloat(this.expScreenTextboxValue.value))) {
             this.experiment.phases[this.phasesIndex].trials[this.trialsIndex].guessTime = 0;
