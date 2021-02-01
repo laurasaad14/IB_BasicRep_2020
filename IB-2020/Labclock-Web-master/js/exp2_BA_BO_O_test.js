@@ -113,6 +113,7 @@ experiment.X = {
            { cycle: 2560, response: 'text' },
            { cycle: 2560 },
            { cycle: 2560 },
+           { cycle: 2560 },
            { cycle: 2560 }
         ],
         screen: {
