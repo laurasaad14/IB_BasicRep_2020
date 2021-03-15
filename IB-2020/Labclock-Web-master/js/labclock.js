@@ -161,7 +161,7 @@ var labclock = {
     i--;
     if (this.trialCurrentLap > 0 || this.experiment.phases[this.phasesIndex].trials[this.trialsIndex].firstlap || this.experiment.phases[this.phasesIndex].trials[this.trialsIndex].nopress) {
       if (this.experiment.phases[this.phasesIndex].trials[this.trialsIndex].tone) {
-        if (!this.experiment.phases[this.phasesIndex].trials[this.trialsIndex].toneTime) {
+        if (!this.experiment.phases[this.phasesIndex].trials[this.trialsIndex].toneTime) { //when this is undefined, define it with the code below
           var delay = this.experiment.phases[this.phasesIndex].trials[this.trialsIndex].tone / 1000;
           this.audioFeedbackNodes[i].start(this.audioContext.currentTime + delay);
           this.experiment.phases[this.phasesIndex].trials[this.trialsIndex].toneTime = (this.audioContext.currentTime - this.experiment.phases[this.phasesIndex].trials[this.trialsIndex].startTrialAudioTime) * 1000 + this.experiment.phases[this.phasesIndex].trials[this.trialsIndex].tone;
@@ -440,6 +440,8 @@ var labclock = {
     this.showButtons(false, true, false, false);
     this.expScreenTitle.innerHTML = this.experiment.phases[i].screen.title;
     this.expScreenContent.innerHTML = this.experiment.phases[i].screen.content;
+    //this.expScreenTitle.innerHTML = this.experiment.phases[i].screen2.title;
+   // this.expScreenContent.innerHTML = this.experiment.phases[i].screen2.content;
   },
   storeExperimentData: function () {
     var results = '',
@@ -869,7 +871,7 @@ var labclock = {
   },
   start: function () {
     this.setButtonsListeners();
-    this.selectExperiment(true); //set it to false to select the group manually
+    this.selectExperiment(false); //set it to false to select the group manually
     this.state = this.STATE_PRE;
     this.displayState();
     if(this.sanityChecks()) {

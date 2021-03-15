@@ -86,8 +86,12 @@ experiment.X = {
       content: '<p><strong>Are you using or wearing headphones to complete this experiment?</strong></p><br/><p>Please enter YES or NO into the text box below.<br/><div id="text"><input type="text" id="the_id_of_the_input_field" size="10" /></div><br/><br/><br/>Press \'Next\' to move on to the instructions.</p>',
     },
     {
-      title: 'Experiment Instructions',
-      content: '<p><strong>Please ensure that you are in a quiet location before beginning the experiment.</strong> Please check the boxes to indicate you have read and understand each section.</p><br/><p><input type= "checkbox"><label>At the beginning of each trial you will see a “GET READY” message. The dot on the clock on your screen will then begin rotating. In this first section, you will be asked to press the spacebar at a time of your choosing after the dot on the clock has completed one full rotation.</</label></p><br/><p><input type= "checkbox"><label><strong>Your task is to pay attention to where the dot was on the clock when you <mark class="red">pressed the spacebar.</mark></strong></label></p><br/><p><input type= "checkbox">At the end of each trial, you will be asked to recall the position of the dot on the clock when you <mark class="red"><strong>pressed the spacebar</strong></mark>. To do that, simply use your mouse to click the position on the clock where you thought the dot was when you pressed the spacebar.</label></p><br/><p><input type= "checkbox"><label>You may move the dot around as many times as you would like. Once you are satisfied with your response, click “OK” and the next trial will start.</label></p><br/><p>Press "Next" to move to the next screen where you will see a clock in demo mode to help you familiarize yourself with the task.</p>'
+      title: 'Experiment Instructions PART 1',
+      content: '<p><strong>Please ensure that you are in a quiet location before beginning the experiment.</strong> Please check the boxes to indicate you have read and understand each section.</p><br/><p><input type= "checkbox"><label>At the beginning of each trial you will see a “GET READY” message. The dot on the clock on your screen will then begin rotating. In this first section, you will be asked to press the spacebar at a time of your choosing after the dot on the clock has completed one full rotation.</</label></p><br/><p><input type= "checkbox"><label><strong>Your task is to pay attention to where the dot was on the clock when you <mark class="red">pressed the spacebar.</mark></strong></label></p><br/><p><input type= "checkbox">At the end of each trial, you will be asked to recall the position of the dot on the clock when you <mark class="red"><strong>pressed the spacebar</strong></mark>. To do that, simply use your mouse to click the position on the clock where you thought the dot was when you pressed the spacebar.</label></p><br/><p><input type= "checkbox"><label>You may move the dot around as many times as you would like. Once you are satisfied with your response, click “OK” and the next trial will start.</label></p><br/><p>Press "Next" to move to the next screen where the instructions are continued.</p>'
+    },
+    {
+      title: '**********WARNING**********',
+      content: '<p>Please check each box to indicate you have read and understood these additional instructions.</p><br/><p><input type= "checkbox"><label>Please <strong>DO NOT press anything</strong> when you see "GET READY!".</label></p><br/><p><input type= "checkbox"><label>Please <strong>DO NOT press the spacebar <u>more than once</u></strong> per trial!</label></p><br/><p><input type= "checkbox"><label>If you press the spacebar and nothing happens <strong>DO NOT PRESS AGAIN</strong>.</label></p><br/><p>Press "Next" to move to the next screen where you will see a clock in demo mode to help you familiarize yourself with the task.',
     },
     {
       title: 'Demo',
@@ -103,7 +107,7 @@ experiment.X = {
         description: 'Baseline action',
         progress: true,
         scramble: true,
-        trials: [
+        trials: [ /*
            { cycle: 2560 },
            { cycle: 2560 },
            { cycle: 2560 },
@@ -115,17 +119,18 @@ experiment.X = {
            { cycle: 2560 },
            { cycle: 2560 },
            { cycle: 2560 }
+          */
         ],
         screen: {
           title: 'Instructions for Part 2',
-          content: '<p>You have completed the first part of the experiment. Again, please check each box to indicate you have read and understood the instructions.</p><br/><p>At the beginning of each trial you will see a “GET READY” message. The dot on the clock on your screen will then begin rotating. This will be followed by a tone that you will hear at a random time.</label></p><br/><p><input type= "checkbox"><label><strong>Your task is to pay attention to where the dot was on the clock when you <mark class="blue">heard the tone.</mark></strong></label></p><br/><p><input type= "checkbox"><label>At the end of each trial, you will be asked to recall the position of the dot on the clock when you <mark class="blue"><strong>heard the tone</mark></strong>. To do that, simply use your mouse to click the position on the clock where you thought the dot was when you heard the tone.</label></p><br/><p><input type= "checkbox"><label>You may move the dot around as many times as you would like. Once you are satisfied with your response, click “OK” and the next trial will start.</label></p><br/><p>Press "OK" to start the next part of the experiment.</p>',
+          content: '<p>You have completed the first part of the experiment. Again, please check each box to indicate you have read and understood the instructions.</p><br/><p>At the beginning of each trial you will see a “GET READY” message. The dot on the clock on your screen will then begin rotating. This will be followed by a tone that you will hear at a random time.</label></p><br/><p><input type= "checkbox"><label><strong>Your task is to pay attention to where the dot was on the clock when you <mark class="blue">heard the tone.</mark></strong></label></p><br/><p><input type= "checkbox"><label>At the end of each trial, you will be asked to recall the position of the dot on the clock when you <mark class="blue"><strong>heard the tone</mark></strong>. To do that, simply use your mouse to click the position on the clock where you thought the dot was when you heard the tone.</label></p><br/><p><input type= "checkbox"><label>You may move the dot around as many times as you would like. Once you are satisfied with your response, click “OK” and the next trial will start.</label></p><br/><p><strong>PLEASE DO NOT PRESS THE SPACEBAR AT ANY TIME DURING THESE TRIALS.</strong></p><br/><p>Press "OK" to start the next part of the experiment.</p>',
         }
     },
     {
       description: 'Baseline outcome',
       progress: true,
       scramble: true,
-      trials: [
+      trials: [ /*
           {cycle: 2560, tone: Math.random() * (2560 - 1280) + 2560, nopress: true, response: 'outcome' },
           { cycle: 2560, tone: Math.random() * (2560 - 1280) + 2560, nopress: true, response: 'outcome' },
           { cycle: 2560, tone: Math.random() * (2560 - 1280) + 2560, nopress: true, response: 'text2' },
@@ -137,18 +142,22 @@ experiment.X = {
           { cycle: 2560, tone: Math.random() * (2560 - 1280) + 2560, nopress: true, response: 'outcome' },
           { cycle: 2560, tone: Math.random() * (2560 - 1280) + 2560, nopress: true, response: 'outcome' },
           { cycle: 2560, tone: Math.random() * (2560 - 1280) + 2560, nopress: true, response: 'outcome' }
-        
+        */
       ],
       screen: {
         title: 'Instructions for Part 3',
-        content: '<p>Please check each box to indicate that you have read and understood the instructions.</p><br/><p><input type= "checkbox"><label>In this last section, <strong>you will be asked to press the spacebar at a time of your choosing after the dot on the clock has completed one full rotation.</strong> Your keypress will cause the computer to play a tone.</label></p><br/><p><input type= "checkbox"><label><strong>Your task will be to pay attention to where the dot was on the clock when you <mark class="red">pressed the spacebar</mark> AND when you <mark class="blue">heard the tone.</mark></strong></label></p><br/><p><input type= "checkbox"><label>At the end of each trial, instructions at the top of the page will ask you to recall the position of the dot on the clock <strong>EITHER when you <mark class="red">pressed the spacebar</mark> OR when you <mark class="blue">heard the tone</mark></strong>. To do that, simply use your mouse to click the position on the clock where you thought the dot was for the relevant event.</label></p><br/><p><input type= "checkbox"><label>You may move the dot around as many times as you would like. Once you are satisfied with your response, click “OK” and the next trial will start.</label></p><br/><p>Press "OK" to start the last part of the experiment.</p>',
-      }
+        content: '<p>You have completed the second part of the experiment. Please check each box to indicate that you have read and understood the instructions.</p><br/><p><input type= "checkbox"><label>In this last section, <strong>you will be asked to press the spacebar at a time of your choosing after the dot on the clock has completed one full rotation.</strong> Your keypress will cause the computer to play a tone.</label></p><br/><p><input type= "checkbox"><label><strong>Your task will be to pay attention to where the dot was on the clock when you <mark class="red">pressed the spacebar</mark> AND when you <mark class="blue">heard the tone.</mark></strong></label></p><br/><p><input type= "checkbox"><label>At the end of each trial, instructions at the top of the page will ask you to recall the position of the dot on the clock <strong>EITHER when you <mark class="red">pressed the spacebar</mark> OR when you <mark class="blue">heard the tone</mark></strong>. To do that, simply use your mouse to click the position on the clock where you thought the dot was for the relevant event.</label></p><br/><p><input type= "checkbox"><label>You may move the dot around as many times as you would like. Once you are satisfied with your response, click “OK” and the next trial will start.</label></p><br/><p>Press "OK" to move to the next screen where the instructions are continued.</p>',
+      } /*,
+      screen: {
+        title: '**********WARNING**********',
+        content: '<p>Please check each box to indicate you have read and understood these additional instructions.</p><br/><p><input type= "checkbox"><label>Please <strong>DO NOT press anything</strong> when you see "GET READY!".</label></p><br/><p><input type= "checkbox"><label>Please <strong>DO NOT press the spacebar <u>more than once</u></strong> per trial!</label></p><br/><p><input type= "checkbox"><label>If you press the spacebar and nothing happens <strong>DO NOT PRESS AGAIN</strong>.</label></p><br/><p><input type= "checkbox"><label>If you do not hear anything after you press the spacebar, wait until the next trial and try again. <strong>DO NOT PRESS MORE THAN ONCE PER TRIAL.</strong></label></p><br/><p>Press "OK" to start the last part of the experiment.</p>',
+      } */
   },
   {
     description: 'Binding Section 1',
     progress: true,
     scramble: true,
-    trials: [
+    trials: [/*
         { cycle: 2560, tone: 250, response: 'outcome' },
         { cycle: 2560, tone: 750, response: 'outcome' },
         { cycle: 2560, tone: 250, response: 'outcome' },
@@ -166,17 +175,22 @@ experiment.X = {
         { cycle: 2560, tone: 250 },
         { cycle: 2560, tone: 750 },
         { cycle: 2560, tone: 250 },
+        */
     ],
     screen: {
       title: 'BREAK - Instructions Repeated',
-      content: '<p><strong>You will be asked to press the spacebar at a time of your choosing after the dot on the clock has completed one full rotation.</strong> Your keypress will cause the computer to play a tone.</p><br/><p><strong>Your task will be to pay attention to where the dot was on the clock when you <mark class="red">pressed the spacebar</mark> AND when you <mark class="blue">heard the tone.</mark></strong></p><br/><p>At the end of each trial, instructions at the top of the page will ask you to recall the position of the dot on the clock <strong>EITHER when you <mark class="red">pressed the spacebar</mark> OR when you <mark class="blue">heard the tone</mark></strong>. To do that, simply use your mouse to click the position on the clock where you thought the dot was for the relevant event.</p><br/><p>You may move the dot around as many times as you would like. Once you are satisfied with your response, click “OK” and the next trial will start. There will be three breaks during this part of the task. Please try your best to stay focused.</p><br/><br/><p>Press "OK" to start the next block.</p>',
-      }  
+      content: '<p><strong>You will be asked to press the spacebar at a time of your choosing after the dot on the clock has completed one full rotation.</strong> Your keypress will cause the computer to play a tone.</p><br/><p><strong>Your task will be to pay attention to where the dot was on the clock when you <mark class="red">pressed the spacebar</mark> AND when you <mark class="blue">heard the tone.</mark></strong></p><br/><p>At the end of each trial, instructions at the top of the page will ask you to recall the position of the dot on the clock <strong>EITHER when you <mark class="red">pressed the spacebar</mark> OR when you <mark class="blue">heard the tone</mark></strong>. To do that, simply use your mouse to click the position on the clock where you thought the dot was for the relevant event.</p><br/><p>You may move the dot around as many times as you would like. Once you are satisfied with your response, click “OK” and the next trial will start. There will be three breaks during this part of the task. Please try your best to stay focused.</p><br/><br/><p>Press "OK" to move to the next screen where the instructions are continued.</p>',
+      }  /*,
+      screen: {
+        title: '**********WARNING**********',
+        content: '<p>Please check each box to indicate you have read and understood these additional instructions.</p><br/><p><input type= "checkbox"><label>Please <strong>DO NOT press anything</strong> when you see "GET READY!".</label></p><br/><p><input type= "checkbox"><label>Please <strong>DO NOT press the spacebar <u>more than once</u></strong> per trial!</label></p><br/><p><input type= "checkbox"><label>If you press the spacebar and nothing happens <strong>DO NOT PRESS AGAIN</strong>.</label></p><br/><p><input type= "checkbox"><label>If you do not hear anything after you press the spacebar, wait until the next trial and try again. <strong>DO NOT PRESS MORE THAN ONCE PER TRIAL.</strong></label></p></br><p>Press "OK" to start the last block.</p>',
+      } */
   },
   {
       description: 'Binding Section 2',
       progress: true,
       scramble: true,
-      trials: [
+      trials: [/*
         { cycle: 2560, tone: 250, response: 'outcome' },
         { cycle: 2560, tone: 750, response: 'outcome' },
         { cycle: 2560, tone: 250, response: 'outcome' },
@@ -194,17 +208,22 @@ experiment.X = {
         { cycle: 2560, tone: 250 },
         { cycle: 2560, tone: 750 },
         { cycle: 2560, tone: 250 },
+        */
       ],
       screen: {
         title: 'BREAK - Instructions Repeated',
-        content: '<p><strong>You will be asked to press the spacebar at a time of your choosing after the dot on the clock has completed one full rotation.</strong> Your keypress will cause the computer to play a tone.</p><br/><p><strong>Your task will be to pay attention to where the dot was on the clock when you <mark class="red">pressed the spacebar</mark> AND when you <mark class="blue">heard the tone.</mark></strong></p><br/><p>At the end of each trial, instructions at the top of the page will ask you to recall the position of the dot on the clock <strong>EITHER when you <mark class="red">pressed the spacebar</mark> OR when you <mark class="blue">heard the tone</mark></strong>. To do that, simply use your mouse to click the position on the clock where you thought the dot was for the relevant event.</p><br/><p>You may move the dot around as many times as you would like. Once you are satisfied with your response, click “OK” and the next trial will start. There will be three breaks during this part of the task. Please try your best to stay focused.</p><br/><br/><p>Press "OK" to start the next block.</p>',
-      }
+        content: '<p><strong>You will be asked to press the spacebar at a time of your choosing after the dot on the clock has completed one full rotation.</strong> Your keypress will cause the computer to play a tone.</p><br/><p><strong>Your task will be to pay attention to where the dot was on the clock when you <mark class="red">pressed the spacebar</mark> AND when you <mark class="blue">heard the tone.</mark></strong></p><br/><p>At the end of each trial, instructions at the top of the page will ask you to recall the position of the dot on the clock <strong>EITHER when you <mark class="red">pressed the spacebar</mark> OR when you <mark class="blue">heard the tone</mark></strong>. To do that, simply use your mouse to click the position on the clock where you thought the dot was for the relevant event.</p><br/><p>You may move the dot around as many times as you would like. Once you are satisfied with your response, click “OK” and the next trial will start. There will be three breaks during this part of the task. Please try your best to stay focused.</p><br/><br/><p>Press "OK" to move to the next screen where the instructions are continued.</p>',
+      }/*,
+        screen: {
+          title: '**********WARNING**********',
+          content: '<p>Please check each box to indicate you have read and understood these additional instructions.</p><br/><p><input type= "checkbox"><label>Please <strong>DO NOT press anything</strong> when you see "GET READY!".</label></p><br/><p><input type= "checkbox"><label>Please <strong>DO NOT press the spacebar <u>more than once</u></strong> per trial!</label></p><br/><p><input type= "checkbox"><label>If you press the spacebar and nothing happens <strong>DO NOT PRESS AGAIN</strong>.</label></p><br/><p><input type= "checkbox"><label>If you do not hear anything after you press the spacebar, wait until the next trial and try again. <strong>DO NOT PRESS MORE THAN ONCE PER TRIAL.</strong></label></p></br><p>Press "OK" to start the last block.</p>',
+        } */
     },
     {
       description: 'Binding Section 3',
       progress: true,
       scramble: true,
-      trials: [
+      trials: [/*
         { cycle: 2560, tone: 250, response: 'outcome' },
         { cycle: 2560, tone: 750, response: 'outcome' },
         { cycle: 2560, tone: 250, response: 'outcome' },
@@ -222,17 +241,23 @@ experiment.X = {
         { cycle: 2560, tone: 250 },
         { cycle: 2560, tone: 750 },
         { cycle: 2560, tone: 250 },
+        */
       ],
       screen: {
         title: 'BREAK - Instructions Repeated',
-        content: '<p><strong>You will be asked to press the spacebar at a time of your choosing after the dot on the clock has completed one full rotation.</strong> Your keypress will cause the computer to play a tone.</p><br/><p><strong>Your task will be to pay attention to where the dot was on the clock when you <mark class="red">pressed the spacebar</mark> AND when you <mark class="blue">heard the tone.</mark></strong></p><br/><p>At the end of each trial, instructions at the top of the page will ask you to recall the position of the dot on the clock <strong>EITHER when you <mark class="red">pressed the spacebar</mark> OR when you <mark class="blue">heard the tone</mark></strong>. To do that, simply use your mouse to click the position on the clock where you thought the dot was for the relevant event.</p><br/><p>You may move the dot around as many times as you would like. Once you are satisfied with your response, click “OK” and the next trial will start. There will be three breaks during this part of the task. Please try your best to stay focused.</p><br/><br/><p>Press "OK" to start the next block.</p>',
+        content: '<p><strong>You will be asked to press the spacebar at a time of your choosing after the dot on the clock has completed one full rotation.</strong> Your keypress will cause the computer to play a tone.</p><br/><p><strong>Your task will be to pay attention to where the dot was on the clock when you <mark class="red">pressed the spacebar</mark> AND when you <mark class="blue">heard the tone.</mark></strong></p><br/><p>At the end of each trial, instructions at the top of the page will ask you to recall the position of the dot on the clock <strong>EITHER when you <mark class="red">pressed the spacebar</mark> OR when you <mark class="blue">heard the tone</mark></strong>. To do that, simply use your mouse to click the position on the clock where you thought the dot was for the relevant event.</p><br/><p>You may move the dot around as many times as you would like. Once you are satisfied with your response, click “OK” and the next trial will start. There will be three breaks during this part of the task. Please try your best to stay focused.</p><br/><br/><p>Press "OK" to move to the next screen where the instructions are continued.</p>',
       }
+      /*,
+        screen: {
+          title: '**********WARNING**********',
+          content: '<p>Please check each box to indicate you have read and understood these additional instructions.</p><br/><p><input type= "checkbox"><label>Please <strong>DO NOT press anything</strong> when you see "GET READY!".</label></p><br/><p><input type= "checkbox"><label>Please <strong>DO NOT press the spacebar <u>more than once</u></strong> per trial!</label></p><br/><p><input type= "checkbox"><label>If you press the spacebar and nothing happens <strong>DO NOT PRESS AGAIN</strong>.</label></p><br/><p><input type= "checkbox"><label>If you do not hear anything after you press the spacebar, wait until the next trial and try again. <strong>DO NOT PRESS MORE THAN ONCE PER TRIAL.</strong></label></p></br><p>Press "OK" to start the last block.</p>',
+        } */
     },
     {
       description: 'Binding Section 4',
       progress: true,
       scramble: true,
-      trials: [
+      trials: [/*
         { cycle: 2560, tone: 250, response: 'outcome' },
         { cycle: 2560, tone: 750, response: 'outcome' },
         { cycle: 2560, tone: 250, response: 'outcome' },
@@ -250,6 +275,7 @@ experiment.X = {
         { cycle: 2560, tone: 250 },
         { cycle: 2560, tone: 750 },
         { cycle: 2560, tone: 250 },
+        */
     ],
       screen: {
         title: 'End of the experiment',
@@ -258,7 +284,7 @@ experiment.X = {
     }
 ],
 postScreens: [
-  {
+  { //debriefing questionnaire would go here in a separate screen before the final screen
     title: 'Thank you!',
     content: '<p>Your responses will be added to those of the other participants and analyzed statistically.</p><br/><p>Thank you very much for your participation.</p><br/><p>If you are interested in these kind of studies, please visit our lab website to learn more about our research: <a href="https://sites.rutgers.edu/ccm-lab/">HCCLAB WEBSITE</a>.</p><br/><br/><strong><mark class="blue">Please click <a href="https://app.prolific.co/submissions/complete?cc=F79B354C">HERE</a> to go back to Prolific.</mark></strong></p><br/><p><strong>*You must click on the link above in order to receive payment for your participation.*</strong></p><br/><p><strong>IF YOU ARE A FRIEND DOING THIS TASK - JUST EXIT OUT OF THE SCREEN. THANK YOU!!!!!</strong></p>'
   }
