@@ -1,7 +1,7 @@
 var labclock = {
-	//Extra variables
-	resolutionWidth: 0,
-	resolutionHeight: 0,
+  //Extra variables
+  resolutionWidth: 0,
+  resolutionHeight: 0,
   //State definition consts
   STATE_PRE: 0,
   STATE_PASSWORD: 1,
@@ -64,7 +64,7 @@ var labclock = {
   trialCurrentLap: 0,
   clockRadius: 225,
   //Methods
-  initAudio: function () {
+  initAudio: function() {
     try {
       this.audioContext = new AudioContext();
       this.audioGetReadyElements[0] = document.createElement('audio');
@@ -72,7 +72,7 @@ var labclock = {
       this.audioGetReadyElements[0].preload = 'auto';
       this.setAudioListeners(0);
 
-      for (var i = 1; i <  this.experiment.sounds.getReady.length; i++) {
+      for (var i = 1; i < this.experiment.sounds.getReady.length; i++) {
         this.audioGetReadyElements[i] = document.createElement('audio');
         this.audioGetReadyElements[i].src = this.experiment.sounds.getReady[i].file;
         this.audioGetReadyElements[i].preload = 'auto';
@@ -83,11 +83,11 @@ var labclock = {
       this.showButtons(false, false, false, false);
     }
   },
-  fisherYates: function (arr) {
+  fisherYates: function(arr) {
     var i = arr.length,
-        j,
-        tempi,
-        tempj;
+      j,
+      tempi,
+      tempj;
     if (i == 0) return false;
     while (--i) {
       j = Math.floor(Math.random() * (i + 1));
@@ -97,11 +97,11 @@ var labclock = {
       arr[j] = tempi;
     }
   },
-  showButtons: function (p, o, n, m) { // previous = p, o = OK, n = next, m = agree
+  showButtons: function(p, o, n, m) { // previous = p, o = OK, n = next, m = agree
     var displayPrevious = p ? 'block' : 'none',
-        displayOK = o ? 'block' : 'none',
-        displayNext = n ? 'block' : 'none',
-        displayAgree = m ? 'block' : 'none';
+      displayOK = o ? 'block' : 'none',
+      displayNext = n ? 'block' : 'none',
+      displayAgree = m ? 'block' : 'none';
     this.buttonPrevious.style.display = displayPrevious;
     this.buttonOK.style.display = displayOK;
     this.buttonNext.style.display = displayNext;
@@ -111,8 +111,8 @@ var labclock = {
       this.buttonOK.style.marginLeft = '48%';
     }
   },
-  showPreScreen: function (i) {
-    if (i >= 0 && i < 6 || (i >=7)) {
+  showPreScreen: function(i) {
+    if (i >= 0 && i < 6 || (i >= 7)) {
       this.showButtons(false, false, true, false); // show Next button for the first 5 pages and all pages after 6
     } else {
       this.showButtons(false, false, false, true); // show I agree button on page 6
@@ -120,34 +120,34 @@ var labclock = {
     this.preScreenTitle.innerHTML = this.experiment.preScreens[i].title;
     this.preScreenContent.innerHTML = this.experiment.preScreens[i].content;
   },
-  showPasswordScreen: function () {
+  showPasswordScreen: function() {
     this.showButtons(false, true, false, false);
     this.preScreenTitle.innerHTML = this.experiment.passwordScreen.title;
     this.preScreenContent.innerHTML = this.experiment.passwordScreen.content;
   },
-  startPhase: function () {
+  startPhase: function() {
     this.trialsIndex = 0;
     this.startTrial(true);
   },
-  playDemo: function () {
+  playDemo: function() {
     this.audioGetReadyElements[0].play();
   },
-  playReady: function (i) {
-    i = i || 1; 
+  playReady: function(i) {
+    i = i || 1;
     this.audioGetReadyElements[--i].play();
     this.state = this.STATE_TRIAL_RUNNING;
     this.startClock();
   },
-  prepareFeedback: function (i) {
+  prepareFeedback: function(i) {
     var SAMPLE_RATE = 48000,
-        PI_2 = Math.PI * 2,
-        j = 0,
-        samples = 0;
+      PI_2 = Math.PI * 2,
+      j = 0,
+      samples = 0;
     i = i || 1;
     i--;
     samples = (this.experiment.sounds.feedback[i].duration / 1000) * SAMPLE_RATE;
     this.audioFeedbackBuffers[i] = this.audioContext.createBuffer(1, samples, SAMPLE_RATE);
-    this.audioFeedbackBuffersData[i] = this.audioFeedbackBuffers[i].getChannelData(0);    
+    this.audioFeedbackBuffersData[i] = this.audioFeedbackBuffers[i].getChannelData(0);
     for (j = 0; j < samples; j++) {
       this.audioFeedbackBuffersData[i][j] = Math.sin(this.experiment.sounds.feedback[i].pitch * PI_2 * j / SAMPLE_RATE);
     }
@@ -156,7 +156,7 @@ var labclock = {
     this.audioFeedbackNodes[i].connect(this.audioContext.destination);
     this.audioFeedbackNodes[i].buffer = this.audioFeedbackBuffers[i];
   },
-  playFeedback: function (i) {
+  playFeedback: function(i) {
     i = i || 1;
     i--;
     if (this.trialCurrentLap > 0 || this.experiment.phases[this.phasesIndex].trials[this.trialsIndex].firstlap || this.experiment.phases[this.phasesIndex].trials[this.trialsIndex].nopress) {
@@ -171,18 +171,18 @@ var labclock = {
       }
     }
   },
-  storeKeypressTrialTime: function (t) {
+  storeKeypressTrialTime: function(t) {
     if (this.experiment.phases[this.phasesIndex].trials[this.trialsIndex].firstlap) {
       this.experiment.phases[this.phasesIndex].trials[this.trialsIndex].keypressTrialTimes.push(t - this.experiment.phases[this.phasesIndex].trials[this.trialsIndex].startTrialTime);
     } else {
       this.experiment.phases[this.phasesIndex].trials[this.trialsIndex].keypressTrialTimes.push(t - this.experiment.phases[this.phasesIndex].trials[this.trialsIndex].startTrialTime - this.experiment.phases[this.phasesIndex].trials[this.trialsIndex].cycle);
     }
   },
-  storeStartTrialTimes: function (t) {
+  storeStartTrialTimes: function(t) {
     this.experiment.phases[this.phasesIndex].trials[this.trialsIndex].startTrialTime = t;
     this.experiment.phases[this.phasesIndex].trials[this.trialsIndex].startTrialAudioTime = this.audioContext.currentTime;
   },
-  storeEndTrialTimes: function (t, e) {
+  storeEndTrialTimes: function(t, e) {
     this.experiment.phases[this.phasesIndex].trials[this.trialsIndex].endTrialTime = e;
     this.experiment.phases[this.phasesIndex].trials[this.trialsIndex].cycleTime = t;
   },
@@ -198,7 +198,7 @@ var labclock = {
       self.labclock.storeKeypressTrialTime(e.timeStamp);
     }
   },
-  animationStartHandler: function (e) {
+  animationStartHandler: function(e) {
     self.labclock.expScreenCaption.innerHTML = '';
     self.labclock.storeStartTrialTimes(e.timeStamp);
     if (self.labclock.experiment.phases[self.labclock.phasesIndex].trials[self.labclock.trialsIndex].nopress) {
@@ -209,7 +209,7 @@ var labclock = {
       self.labclock.setKeyboardListener();
     }
   },
-  animationIterationHandler: function (e) {
+  animationIterationHandler: function(e) {
     self.labclock.trialCurrentLap++;
     if (self.labclock.experiment.phases[self.labclock.phasesIndex].trials[self.labclock.trialsIndex].stop && self.labclock.experiment.phases[self.labclock.phasesIndex].trials[self.labclock.trialsIndex].toneTime) {
       self.labclock.dot.style.webkitAnimation = 'none';
@@ -221,7 +221,7 @@ var labclock = {
       self.labclock.displayState();
     }
   },
-  animationEndHandler: function (e) {
+  animationEndHandler: function(e) {
     self.labclock.dot.style.webkitAnimation = 'none';
     self.labclock.dot.style.mozAnimation = 'none';
     self.labclock.dot.style.animation = 'none';
@@ -230,26 +230,27 @@ var labclock = {
     self.labclock.state = self.labclock.STATE_TRIAL_SELECTING;
     self.labclock.displayState();
   },
-  audioGetReadyEndHandler: function (e) {
+  audioGetReadyEndHandler: function(e) {
     this.pause();
   },
-  setKeyboardListener: function () {
+  setKeyboardListener: function() {
     window.addEventListener('keypress', this.keypressHandler, false);
   },
-  unsetKeyboardListener: function () {
+  unsetKeyboardListener: function() {
     window.removeEventListener('keypress', this.keypressHandler, false);
   },
-  setAudioListeners: function (i) {
+  setAudioListeners: function(i) {
     i = i || 0;
     this.audioGetReadyElements[i].addEventListener('ended', this.audioGetReadyEndHandler, false);
   },
-  setButtonsListeners: function () {
+  setButtonsListeners: function() {
     this.buttonPreviousElement.addEventListener('click', this.clickPrevious.bind(this), false);
     this.buttonOKElement.addEventListener('click', this.clickOK.bind(this), false);
     this.buttonNextElement.addEventListener('click', this.clickNext.bind(this), false);
-    this.buttonAgreeElement.addEventListener('click', this.clickAgree.bind(this), false); 
+    this.buttonAgreeElement.addEventListener('click', this.clickAgree.bind(this), false);
+    this.postScreenContent.addEventListener('click', this.radioCheck.bind(this), false);
   },
-  setClockListeners: function () {
+  setClockListeners: function() {
     this.dot.addEventListener('webkitAnimationStart', this.animationStartHandler, false);
     this.dot.addEventListener('animationstart', this.animationStartHandler, false);
     this.dot.addEventListener('webkitAnimationIteration', this.animationIterationHandler, false);
@@ -257,7 +258,7 @@ var labclock = {
     this.dot.addEventListener('webkitAnimationEnd', this.animationEndHandler, false);
     this.dot.addEventListener('animationend', this.animationEndHandler, false);
   },
-  setClock: function (d, c, s, l) {
+  setClock: function(d, c, s, l) {
     var delay = d / 1000;
     delay += 's';
     var duration = c / 1000;
@@ -297,12 +298,12 @@ var labclock = {
     this.dot.style.mozTransform = 'rotate(0deg)';
     this.dot.style.transform = 'rotate(0deg)';
   },
-  startClock: function () {
+  startClock: function() {
     this.dot.style.webkitAnimationPlayState = 'running';
     this.dot.style.mozAnimationPlayState = 'running';
     this.dot.style.animationPlayState = 'running';
   },
-  startTrial: function (playSound) {
+  startTrial: function(playSound) {
     var progress;
     if (this.trialsIndex < this.experiment.phases[this.phasesIndex].trials.length) {
       this.dot.style.display = 'block';
@@ -312,7 +313,7 @@ var labclock = {
       this.experiment.phases[this.phasesIndex].trials[this.trialsIndex].delay = Math.floor(Math.random() * (this.experiment.randomDelayMax - this.experiment.randomDelayMin + 1) + this.experiment.randomDelayMin);
       //Random delay MUST be different to the previous one, otherwise CSS3 Animation won't reset
       if (this.trialsIndex > 0) {
-        while (this.experiment.phases[this.phasesIndex].trials[this.trialsIndex].delay === this.experiment.phases[this.phasesIndex].trials[this.trialsIndex-1].delay) {
+        while (this.experiment.phases[this.phasesIndex].trials[this.trialsIndex].delay === this.experiment.phases[this.phasesIndex].trials[this.trialsIndex - 1].delay) {
           this.experiment.phases[this.phasesIndex].trials[this.trialsIndex].delay = Math.floor(Math.random() * (this.experiment.randomDelayMax - this.experiment.randomDelayMin + 1) + this.experiment.randomDelayMin);
         }
       }
@@ -326,74 +327,74 @@ var labclock = {
         this.startClock();
       }
     } else {
-      this.state = this.STATE_PHASE_END; 
+      this.state = this.STATE_PHASE_END;
     }
     this.displayState();
   },
-  setAngle: function (x1, y1, x2, y2) {
-    var theta = Math.atan2(x2-x1, y2-y1),
-        degree = (theta * (180 / Math.PI) * -1) - 180, //this takes the theta is radians and converts it to degrees
-        d = Math.sqrt((x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1)); //the distance between the two points
+  setAngle: function(x1, y1, x2, y2) {
+    var theta = Math.atan2(x2 - x1, y2 - y1),
+      degree = (theta * (180 / Math.PI) * -1) - 180, //this takes the theta is radians and converts it to degrees
+      d = Math.sqrt((x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1)); //the distance between the two points
     if (d < this.clockRadius) { //if the distance is less than the radius (?) and the degree value is negative then add 360
       if (degree < 0) {
         degree += 360; //might need to get rid of this
       }
-      this.dot.style.webkitTransform = 'rotate('+degree+'deg)';
-      this.dot.style.mozTransform = 'rotate('+degree+'deg)';
-      this.dot.style.transform = 'rotate('+degree+'deg)';
+      this.dot.style.webkitTransform = 'rotate(' + degree + 'deg)';
+      this.dot.style.mozTransform = 'rotate(' + degree + 'deg)';
+      this.dot.style.transform = 'rotate(' + degree + 'deg)';
       this.dot.style.display = 'block';
       this.experiment.phases[this.phasesIndex].trials[this.trialsIndex].angle = degree;
       if (this.experiment.phases[this.phasesIndex].trials[this.trialsIndex].counterclockwise) {
-        this.experiment.phases[this.phasesIndex].trials[this.trialsIndex].guessTime = (360-degree) * this.experiment.phases[this.phasesIndex].trials[this.trialsIndex].cycle / 360;
+        this.experiment.phases[this.phasesIndex].trials[this.trialsIndex].guessTime = (360 - degree) * this.experiment.phases[this.phasesIndex].trials[this.trialsIndex].cycle / 360;
       } else {
         this.experiment.phases[this.phasesIndex].trials[this.trialsIndex].guessTime = degree * this.experiment.phases[this.phasesIndex].trials[this.trialsIndex].cycle / 360;
       }
       this.enableOKWhenSelected();
     }
   },
-  clickWhenSelectingHandler: function (e) {
+  clickWhenSelectingHandler: function(e) {
     var obj = this,
-        leftValue = 0,
-        topValue = 0;
+      leftValue = 0,
+      topValue = 0;
     while (obj) {
       leftValue += obj.offsetLeft;
       topValue += obj.offsetTop;
       obj = obj.offsetParent;
     }
     var centerX = leftValue + this.offsetWidth / 2,
-        centerY = topValue + this.offsetHeight / 2;
+      centerY = topValue + this.offsetHeight / 2;
     self.labclock.setAngle(centerX, centerY, e.clientX, e.clientY);
   },
-  noKeyPress: function () {
-      setTimeout(this.startNextTrialHandler, 10);
-  }, 
-  startNextTrialHandler: function (e) {
+  noKeyPress: function() {
+    setTimeout(this.startNextTrialHandler, 10);
+  },
+  startNextTrialHandler: function(e) {
     self.labclock.trialsIndex++;
     self.labclock.startTrial(true);
   },
-  setWhenSelectingListeners: function () {
+  setWhenSelectingListeners: function() {
     this.clock.addEventListener('click', this.clickWhenSelectingHandler, false);
   },
-  unsetWhenSelectingListeners: function () {
+  unsetWhenSelectingListeners: function() {
     this.clock.removeEventListener('click', this.clickWhenSelectingHandler, false);
   },
-  enableOKWhenSelected: function () {
+  enableOKWhenSelected: function() {
     this.showButtons(false, true, false, false);
   },
-  waitForToneToStartSelecting: function (t) {
-    if (self.labclock.audioContext.currentTime < t ) {
+  waitForToneToStartSelecting: function(t) {
+    if (self.labclock.audioContext.currentTime < t) {
       setTimeout(self.labclock.waitForToneToStartSelecting, 5, t);
     } else {
       self.labclock.startSelecting();
     }
   },
-  startSelecting: function () {
+  startSelecting: function() {
     if (this.experiment.phases[this.phasesIndex].trials[this.trialsIndex].toneTime) {
       this.dot.style.webkitAnimationPlayState = 'paused';
       this.dot.style.mozAnimationPlayState = 'paused';
       this.dot.style.animationPlayState = 'paused';
       if (this.experiment.phases[this.phasesIndex].trials[this.trialsIndex].response === 'text') {
-        this.expScreenCaption.innerHTML = this.experiment.messages.trialSelectingText; 
+        this.expScreenCaption.innerHTML = this.experiment.messages.trialSelectingText;
         this.expScreenTextboxValue.value = '';
         this.expScreenTextbox.style.display = 'block';
         this.showButtons(false, true, false);
@@ -428,25 +429,25 @@ var labclock = {
       } else {
         this.expScreenCaption.innerHTML = this.experiment.messages.trialSelecting;
         this.setWhenSelectingListeners();
-    }
-   } else {
+      }
+    } else {
       this.dot.style.webkitAnimationPlayState = 'paused';
       this.dot.style.mozAnimationPlayState = 'paused';
       this.dot.style.animationPlayState = 'paused';
       this.noKeyPress();
     }
   },
-  showPhaseScreen: function (i) {
+  showPhaseScreen: function(i) {
     this.showButtons(false, true, false, false);
     this.expScreenTitle.innerHTML = this.experiment.phases[i].screen.title;
     this.expScreenContent.innerHTML = this.experiment.phases[i].screen.content;
     //this.expScreenTitle.innerHTML = this.experiment.phases[i].screen2.title;
-   // this.expScreenContent.innerHTML = this.experiment.phases[i].screen2.content;
+    // this.expScreenContent.innerHTML = this.experiment.phases[i].screen2.content;
   },
-  storeExperimentData: function () {
+  storeExperimentData: function() {
     var results = '',
-        resultsEnd = '', //old code: resultsEnd = 'Full results;',
-        xhr, storageItem;
+      resultsEnd = '', //old code: resultsEnd = 'Full results;',
+      xhr, storageItem;
     results += this.experiment.code + ';';
     results += this.userId + ';'; //store the prolific ID
     results += this.experiment.password + ';'; //saves the condition type password
@@ -460,8 +461,8 @@ var labclock = {
       resultsEnd += this.experiment.phases[p].description + ';';
       for (var t = 0, lt = this.experiment.phases[p].trials.length; t < lt; t++) {
         //results += 'trial' + t + ';'; 
-       // results += this.experiment.phases[p].trials[t].response + ';'; //trial type (action or outcome)
-       // results += this.experiment.phases[p].trials[t].tone + ';'; // time of the delay between action and outcome
+        // results += this.experiment.phases[p].trials[t].response + ';'; //trial type (action or outcome)
+        // results += this.experiment.phases[p].trials[t].tone + ';'; // time of the delay between action and outcome
         //results += this.experiment.phases[p].trials[t].keypressTrialTimes + ';'; //list of all space bar key presses
         //results += this.experiment.phases[p].trials[t].toneTime + ';'; //delay startTrialAudioTimems of auditory stimulus for this trial
         //results += this.experiment.phases[p].trials[t].guessTime + ';'; //subjective timing of the events = degrees x cycle / 360.
@@ -483,19 +484,19 @@ var labclock = {
       } //
     }
     results += resultsEnd;
-		results += '\n';
-		// send email
+    results += '\n';
+    // send email
     if (this.experiment.postResultsURL) {
       xhr = new XMLHttpRequest();
       xhr.open('POST', this.experiment.postResultsURL, true); // true because handles the request asynchronously (this is preferred)
-      xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-      xhr.onreadystatechange = function (e) {
+      xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+      xhr.onreadystatechange = function(e) {
         if (xhr.readyState === 4) {
-           if (xhr.status === 200) {
-             window.console.log('Sent!');
-           } else {
-             window.console.log('Error ' + xhr.status);
-           }
+          if (xhr.status === 200) {
+            window.console.log('Sent!');
+          } else {
+            window.console.log('Error ' + xhr.status);
+          }
         }
       };
       try {
@@ -503,7 +504,7 @@ var labclock = {
       } catch (e) {
         alert(this.experiment.messages.errorAJAX);
       }
-    } 
+    }
     if (this.experiment.generateCSV || !this.experiment.postResultsURL) {
       // Show CSV link in a new post-screen
       var screen = {
@@ -516,7 +517,94 @@ var labclock = {
       window.localStorage.setItem(storageItem, results);
     }
   },
-  showPostScreen: function (i) {
+  storeQuestionaireData: function() {
+
+    // retrieve quesionaire data
+    var radioOneYes = document.getElementById('q1_yes');
+    var radioThreeYes = document.getElementById('q3_yes');
+    var radioFourYes = document.getElementById('q4_yes');
+    var radioFiveYes = document.getElementById('q5_yes');
+    var radioSixYes = document.getElementById('q6_yes');
+    var textOne = document.getElementById('q1_text');
+    var textTwo = document.getElementById('q2_text');
+    var textSix = document.getElementById('q6_text');
+
+    var q1;
+    var q1_text;
+    var q2;
+    var q2_text;
+    var q3;
+    var q4;
+    var q5;
+    var q6;
+    var q6_text;
+
+    q1 = radioOneYes.checked ? 'Yes' : 'No';
+    q1_text = radioOneYes.checked ? textOne.value : '';
+    q2_text = radioOneYes.checked ? textTwo.value : '';
+    q3 = radioThreeYes.checked ? 'Yes' : 'No';
+    q4 = radioFourYes.checked ? 'Yes' : 'No';
+    q5 = radioFiveYes.checked ? 'Yes' : 'No';
+    q6 = radioSixYes.checked ? 'Yes' : 'No';
+    q6_text = radioSixYes.checked ? textSix.value : '';
+
+    var results = '',
+      resultsEnd = '', //old code: resultsEnd = 'Full results;',
+      xhr, storageItem;
+    results += this.experiment.code + ';';
+    results += this.userId + ';'; //store the prolific ID
+    results += this.experiment.password + ';'; //saves the condition type password
+    results += this.resolutionWidth + ';' + this.resolutioHeight + ';'; //saves the window dimensions in pixels
+    results += this.headphone + ';'; //saves the response to the headphone question
+    results += Date() + ';';
+    storageItem = results;
+    results += navigator.userAgent + ';';
+
+    // Questionaire data
+    results += q1 + ';';
+    results += q1_text + ';';
+    results += q2_text + ';';
+    results += q3 + ';';
+    results += q4 + ';';
+    results += q5 + ';';
+    results += q6 + ';';
+    results += q6_text + ';';
+
+    results += resultsEnd;
+    results += '\n';
+    // send email
+    if (this.experiment.postQuestionareResultsURL) {
+      xhr = new XMLHttpRequest();
+      xhr.open('POST', this.experiment.postQuestionareResultsURL, true); // true because handles the request asynchronously (this is preferred)
+      xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+      xhr.onreadystatechange = function(e) {
+        if (xhr.readyState === 4) {
+          if (xhr.status === 200) {
+            window.console.log('Questionare data stored!');
+          } else {
+            window.console.log('Error ' + xhr.status);
+          }
+        }
+      };
+      try {
+        xhr.send('data=' + results);
+      } catch (e) {
+        alert(this.experiment.messages.errorAJAX);
+      }
+    }
+    if (this.experiment.generateCSV || !this.experiment.postQuestionareResultsURL) {
+      // Show CSV link in a new post-screen
+      var screen = {
+        title: this.experiment.messages.downloadTitle,
+        content: '<p><a href="data:text/csv;base64,' + window.btoa(results) + '">' + this.experiment.messages.downloadData + '</a></p>'
+      };
+      this.experiment.postScreens.push(screen);
+    }
+    if (Modernizr.localstorage) {
+      window.localStorage.setItem(storageItem, results);
+    }
+  },
+  showPostScreen: function(i) {
     if (i > 0) {
       this.showButtons(true, false, true, false);
     } else {
@@ -525,7 +613,104 @@ var labclock = {
     this.postScreenTitle.innerHTML = this.experiment.postScreens[i].title;
     this.postScreenContent.innerHTML = this.experiment.postScreens[i].content;
   },
-  nextPhase: function () {
+  radioCheck: function() {
+    var radioOne = document.getElementById('q1_yes');
+    var radioSix = document.getElementById('q6_yes');
+    if (radioOne.checked) {
+      document.getElementById('ifQ1Yes').style.display = 'block';
+      document.getElementById('Question2').style.display = 'block';
+      document.getElementById('Question3').style.display = 'block';
+      document.getElementById('Question4').style.display = 'block';
+      document.getElementById('Question5').style.display = 'block';
+      document.getElementById('Question6').style.display = 'block';
+      if (radioSix.checked) {
+        document.getElementById('ifQ6Yes').style.display = 'block';
+      } else {
+        document.getElementById('ifQ6Yes').style.display = 'none';
+      }
+    } else {
+      document.getElementById('ifQ1Yes').style.display = 'none';
+      document.getElementById('Question2').style.display = 'none';
+      document.getElementById('Question3').style.display = 'none';
+      document.getElementById('Question4').style.display = 'none';
+      document.getElementById('Question5').style.display = 'none';
+      document.getElementById('Question6').style.display = 'none';
+    }
+  },
+  sanityCheckForQuestionaire: function() {
+
+    var radioOneYes = document.getElementById('q1_yes');
+    var radioOneNo = document.getElementById('q1_no');
+    var radioThreeYes = document.getElementById('q3_yes');
+    var radioThreeNo = document.getElementById('q3_no');
+    var radioFourYes = document.getElementById('q4_yes');
+    var radioFourNo = document.getElementById('q4_no');
+    var radioFiveYes = document.getElementById('q5_yes');
+    var radioFiveNo = document.getElementById('q5_no');
+    var radioSixYes = document.getElementById('q6_yes');
+    var radioSixNo = document.getElementById('q6_no');
+    var textOne = document.getElementById('q1_text');
+    var textTwo = document.getElementById('q2_text');
+    var textSix = document.getElementById('q6_text');
+
+    // check for q1
+    if (!radioOneYes.checked && !radioOneNo.checked) {
+      alert('Please answer quesion 1!');
+      return false;
+    }
+    if (radioOneYes.checked) {
+      // check for q1 textbox
+      if (textOne.value === '') {
+        alert('Please elaborate in the text box in quesion 1 if you answered yes to quesion 1!');
+        return false;
+      }
+
+      // check for q2 textbox
+      if (textTwo.value === '') {
+        alert('Please elaborate in the text box in quesion 2 if you answered yes to quesion 1!');
+        return false;
+      }
+
+      // check for q3
+      if (!radioThreeYes.checked && !radioThreeNo.checked) {
+        alert('Please answer quesion 3!');
+        return false;
+      }
+
+      // check for q4
+      if (!radioFourYes.checked && !radioFourNo.checked) {
+        alert('Please answer quesion 4!');
+        return false;
+      }
+
+      // check for q5
+      if (!radioFiveYes.checked && !radioFiveNo.checked) {
+        alert('Please answer quesion 5!');
+        return false;
+      }
+
+      // check for q6
+      if (!radioSixYes.checked && !radioSixNo.checked) {
+        alert('Please answer quesion 6!');
+        return false;
+      }
+
+      // check for q6 text box
+      if (radioSixYes.checked) {
+        if (textSix.value === '') {
+          alert('Please elaborate in the text box in quesion 6 if you answered yes to quesion 6!');
+          return false;
+        }
+      }
+    } else {
+      textOne.value = '';
+      textTwo.value = '';
+      textSix.value = '';
+    }
+
+    return true;
+  },
+  nextPhase: function() {
     this.phasesIndex++;
     if (this.phasesIndex < this.experiment.phases.length) {
       this.state = this.STATE_PHASE_START;
@@ -535,7 +720,7 @@ var labclock = {
     }
     this.displayState();
   },
-  clickPrevious: function () {
+  clickPrevious: function() {
     switch (this.state) {
       case this.STATE_PRE:
         this.preScreensIndex = (this.preScreensIndex > 0) ? this.preScreensIndex - 1 : 0;
@@ -547,18 +732,18 @@ var labclock = {
         break;
     }
   },
-  clickOK: function () {
-		if (this.checkCheckBoxes() == false) {
-			alert('Please check all of the checkboxes!');
-			return;
-		}
+  clickOK: function() {
+    if (this.checkCheckBoxes() == false) {
+      alert('Please check all of the checkboxes!');
+      return;
+    }
     switch (this.state) {
       case this.STATE_PASSWORD:
         var c = document.getElementById('pre_password_text').value;
         if (c === this.experiment.password) {
           this.state = this.STATE_PHASE_START;
           this.displayState();
-        } else  {
+        } else {
           window.alert(this.experiment.messages.wrongPassword);
         }
         break;
@@ -576,57 +761,57 @@ var labclock = {
             this.expScreenTextbox.style.display = 'none';
             ok = true;
           }
-      } else if (this.experiment.phases[this.phasesIndex].trials[this.trialsIndex].response == 'text2') { 
-        // angle stores the value of the textbox, not the corresponding angle when using response: 'textX'
-        this.experiment.phases[this.phasesIndex].trials[this.trialsIndex].angle = this.expScreenTextboxValue.value;
-        // guessTime stores the estimation in ms considering the cycle time
-        if (isNaN(parseFloat(this.expScreenTextboxValue.value))) {
-          this.experiment.phases[this.phasesIndex].trials[this.trialsIndex].guessTime = 0;
-          ok = false;
-        } else {
-          this.experiment.phases[this.phasesIndex].trials[this.trialsIndex].guessTime = this.expScreenTextboxValue.value * this.experiment.phases[this.phasesIndex].trials[this.trialsIndex].cycle / 60;
-          this.expScreenTextbox.style.display = 'none';
-          ok = true;
-        }
-      } else if (this.experiment.phases[this.phasesIndex].trials[this.trialsIndex].response == 'text3') { 
-        // angle stores the value of the textbox, not the corresponding angle when using response: 'textX'
-        this.experiment.phases[this.phasesIndex].trials[this.trialsIndex].angle = this.expScreenTextboxValue.value;
-        // guessTime stores the estimation in ms considering the cycle time
-        if (isNaN(parseFloat(this.expScreenTextboxValue.value))) {
-          this.experiment.phases[this.phasesIndex].trials[this.trialsIndex].guessTime = 0;
-          ok = false;
-        } else {
-          this.experiment.phases[this.phasesIndex].trials[this.trialsIndex].guessTime = this.expScreenTextboxValue.value * this.experiment.phases[this.phasesIndex].trials[this.trialsIndex].cycle / 60;
-          this.expScreenTextbox.style.display = 'none';
-          ok = true;
-        }
-      } else if (this.experiment.phases[this.phasesIndex].trials[this.trialsIndex].response == 'text4') { 
-        // angle stores the value of the textbox, not the corresponding angle when using response: 'textX'
-        this.experiment.phases[this.phasesIndex].trials[this.trialsIndex].angle = this.expScreenTextboxValue.value;
-        // guessTime stores the estimation in ms considering the cycle time
-        if (isNaN(parseFloat(this.expScreenTextboxValue.value))) {
-          this.experiment.phases[this.phasesIndex].trials[this.trialsIndex].guessTime = 0;
-          ok = false;
-        } else {
-          this.experiment.phases[this.phasesIndex].trials[this.trialsIndex].guessTime = this.expScreenTextboxValue.value * this.experiment.phases[this.phasesIndex].trials[this.trialsIndex].cycle / 60;
-          this.expScreenTextbox.style.display = 'none';
-          ok = true;
-        }
-      } else if (this.experiment.phases[this.phasesIndex].trials[this.trialsIndex].response == 'text5') { 
-        // angle stores the value of the textbox, not the corresponding angle when using response: 'textX'
-        this.experiment.phases[this.phasesIndex].trials[this.trialsIndex].angle = this.expScreenTextboxValue.value;
-        // guessTime stores the estimation in ms considering the cycle time
-        if (isNaN(parseFloat(this.expScreenTextboxValue.value))) {
-          this.experiment.phases[this.phasesIndex].trials[this.trialsIndex].guessTime = 0;
-          ok = false;
-        } else {
-          this.experiment.phases[this.phasesIndex].trials[this.trialsIndex].guessTime = this.expScreenTextboxValue.value * this.experiment.phases[this.phasesIndex].trials[this.trialsIndex].cycle / 60;
-          this.expScreenTextbox.style.display = 'none';
-          ok = true;
-        }
-      } else if (this.experiment.phases[this.phasesIndex].trials[this.trialsIndex].response == 'text6') { 
-        // angle stores the value of the textbox, not the corresponding angle when using response: 'textX'
-        this.experiment.phases[this.phasesIndex].trials[this.trialsIndex].angle = this.expScreenTextboxValue.value;
+        } else if (this.experiment.phases[this.phasesIndex].trials[this.trialsIndex].response == 'text2') {
+          // angle stores the value of the textbox, not the corresponding angle when using response: 'textX'
+          this.experiment.phases[this.phasesIndex].trials[this.trialsIndex].angle = this.expScreenTextboxValue.value;
+          // guessTime stores the estimation in ms considering the cycle time
+          if (isNaN(parseFloat(this.expScreenTextboxValue.value))) {
+            this.experiment.phases[this.phasesIndex].trials[this.trialsIndex].guessTime = 0;
+            ok = false;
+          } else {
+            this.experiment.phases[this.phasesIndex].trials[this.trialsIndex].guessTime = this.expScreenTextboxValue.value * this.experiment.phases[this.phasesIndex].trials[this.trialsIndex].cycle / 60;
+            this.expScreenTextbox.style.display = 'none';
+            ok = true;
+          }
+        } else if (this.experiment.phases[this.phasesIndex].trials[this.trialsIndex].response == 'text3') {
+          // angle stores the value of the textbox, not the corresponding angle when using response: 'textX'
+          this.experiment.phases[this.phasesIndex].trials[this.trialsIndex].angle = this.expScreenTextboxValue.value;
+          // guessTime stores the estimation in ms considering the cycle time
+          if (isNaN(parseFloat(this.expScreenTextboxValue.value))) {
+            this.experiment.phases[this.phasesIndex].trials[this.trialsIndex].guessTime = 0;
+            ok = false;
+          } else {
+            this.experiment.phases[this.phasesIndex].trials[this.trialsIndex].guessTime = this.expScreenTextboxValue.value * this.experiment.phases[this.phasesIndex].trials[this.trialsIndex].cycle / 60;
+            this.expScreenTextbox.style.display = 'none';
+            ok = true;
+          }
+        } else if (this.experiment.phases[this.phasesIndex].trials[this.trialsIndex].response == 'text4') {
+          // angle stores the value of the textbox, not the corresponding angle when using response: 'textX'
+          this.experiment.phases[this.phasesIndex].trials[this.trialsIndex].angle = this.expScreenTextboxValue.value;
+          // guessTime stores the estimation in ms considering the cycle time
+          if (isNaN(parseFloat(this.expScreenTextboxValue.value))) {
+            this.experiment.phases[this.phasesIndex].trials[this.trialsIndex].guessTime = 0;
+            ok = false;
+          } else {
+            this.experiment.phases[this.phasesIndex].trials[this.trialsIndex].guessTime = this.expScreenTextboxValue.value * this.experiment.phases[this.phasesIndex].trials[this.trialsIndex].cycle / 60;
+            this.expScreenTextbox.style.display = 'none';
+            ok = true;
+          }
+        } else if (this.experiment.phases[this.phasesIndex].trials[this.trialsIndex].response == 'text5') {
+          // angle stores the value of the textbox, not the corresponding angle when using response: 'textX'
+          this.experiment.phases[this.phasesIndex].trials[this.trialsIndex].angle = this.expScreenTextboxValue.value;
+          // guessTime stores the estimation in ms considering the cycle time
+          if (isNaN(parseFloat(this.expScreenTextboxValue.value))) {
+            this.experiment.phases[this.phasesIndex].trials[this.trialsIndex].guessTime = 0;
+            ok = false;
+          } else {
+            this.experiment.phases[this.phasesIndex].trials[this.trialsIndex].guessTime = this.expScreenTextboxValue.value * this.experiment.phases[this.phasesIndex].trials[this.trialsIndex].cycle / 60;
+            this.expScreenTextbox.style.display = 'none';
+            ok = true;
+          }
+        } else if (this.experiment.phases[this.phasesIndex].trials[this.trialsIndex].response == 'text6') {
+          // angle stores the value of the textbox, not the corresponding angle when using response: 'textX'
+          this.experiment.phases[this.phasesIndex].trials[this.trialsIndex].angle = this.expScreenTextboxValue.value;
           // guessTime stores the estimation in ms considering the cycle time
           if (isNaN(parseFloat(this.expScreenTextboxValue.value))) {
             this.experiment.phases[this.phasesIndex].trials[this.trialsIndex].guessTime = 0;
@@ -648,42 +833,41 @@ var labclock = {
         this.nextPhase();
         break;
     }
-  },  
-	checkCheckBoxes: function () {
-		var inputs = document.getElementsByTagName('input');
-		var allChecked = true;
-		for (var i = 0, l = inputs.length; i < l; ++i) {
-			if (inputs[i].type == "checkbox" && !inputs[i].checked) {
-				allChecked = false;
-			}
-		}
-		return allChecked;
-	},
-  clickNext: function () {
+  },
+  checkCheckBoxes: function() {
+    var inputs = document.getElementsByTagName('input');
+    var allChecked = true;
+    for (var i = 0, l = inputs.length; i < l; ++i) {
+      if (inputs[i].type == "checkbox" && !inputs[i].checked) {
+        allChecked = false;
+      }
+    }
+    return allChecked;
+  },
+  clickNext: function() {
     switch (this.state) {
       case this.STATE_PRE:
         // Check to see if we're moving away from the screen with 
         // the ID input, and if so, store that for later reference
         if (this.preScreensIndex === 1) {
           this.userId = document.getElementById('the_id_of_the_input_field').value;
-					if (this.userId == "") {
-						alert('Please input a user id!');
-						break;
-					}
+          if (this.userId == "") {
+            alert('Please input a user id!');
+            break;
+          }
         }
         // Check to see if we're moving away from the screen with 
         // the headphone input, and if so, store that for later reference
         if (this.preScreensIndex === 7) {
           this.headphone = document.getElementById('the_id_of_the_input_field').value;
-					if (this.headphone == "") {
-						alert('Please respond YES or NO!');
-						break;
+          if (this.headphone == "") {
+            alert('Please respond YES or NO!');
+            break;
           }
+        } else if (this.checkCheckBoxes() == false) {
+          alert('Please check all of the checkboxes!');
+          break;
         }
-				else if (this.checkCheckBoxes() == false) {
-					alert('Please check all of the checkboxes!');
-					break;
-				}
         this.preScreensIndex++;
         if (this.preScreensIndex < this.experiment.preScreens.length) {
           this.showPreScreen(this.preScreensIndex);
@@ -696,12 +880,24 @@ var labclock = {
         // Check to see if we're moving away from the screen with 
         // the headphone input, and if so, store that for later reference
         //if (this.postScreensIndex === 0) {
-          //this.headphone = document.getElementById('the_id_of_the_input_field').value;
-					//if (this.headphone == "") {
-					//	alert('Please respond YES or NO!');
-					//	break;
-         // }
-       // }
+        //this.headphone = document.getElementById('the_id_of_the_input_field').value;
+        //if (this.headphone == "") {
+        //	alert('Please respond YES or NO!');
+        //	break;
+        // }
+        // }
+
+        // Check if we are on the questionaire page
+        if (typeof this.experiment.postScreens[this.postScreensIndex].type !== 'undefined' && this.experiment.postScreens[this.postScreensIndex].type === 'questionaire') {
+          // do sanity check
+          if (this.sanityCheckForQuestionaire()) {
+            // passed sanity check, store data
+            this.storeQuestionaireData();
+          } else {
+            break;
+          }
+        }
+
         this.postScreensIndex++;
         if (this.postScreensIndex < this.experiment.postScreens.length) {
           this.showPostScreen(this.postScreensIndex);
@@ -711,14 +907,14 @@ var labclock = {
         }
         break;
     }
-  },                  
-  clickAgree: function () {
+  },
+  clickAgree: function() {
     switch (this.state) {
       case this.STATE_PRE:
-				if (this.checkCheckBoxes() == false) {
-					alert('Please check all of the checkboxes!');
-					break;
-				}
+        if (this.checkCheckBoxes() == false) {
+          alert('Please check all of the checkboxes!');
+          break;
+        }
         this.preScreensIndex++;
         if (this.preScreensIndex < this.experiment.preScreens.length) {
           this.showPreScreen(this.preScreensIndex);
@@ -737,8 +933,8 @@ var labclock = {
         }
         break;
     }
-  },         
-  displayState: function () {
+  },
+  displayState: function() {
     switch (this.state) {
       case this.STATE_PRE:
         this.captionPrevious.innerHTML = this.experiment.messages.commandPrevious;
@@ -759,12 +955,12 @@ var labclock = {
         this.expScreenTitle.innerHTML = '';
         this.expScreenClock.style.display = 'block';
         this.showButtons(false, false, false, false);
-        if(this.experiment.phases[this.phasesIndex].progress) {
+        if (this.experiment.phases[this.phasesIndex].progress) {
           this.expScreenProgress.style.display = 'block';
         } else {
           this.expScreenProgress.style.display = 'none';
         }
-        if(this.experiment.phases[this.phasesIndex].scramble) {
+        if (this.experiment.phases[this.phasesIndex].scramble) {
           this.fisherYates(this.experiment.phases[this.phasesIndex].trials);
         }
         this.startPhase();
@@ -813,11 +1009,11 @@ var labclock = {
         break;
     }
   },
-  sanityChecks: function () {
+  sanityChecks: function() {
     var cssanimations = false,
-        audio = false,
-        resolution = false,
-        errorHTML = '<p><strong>ERROR:</strong> ';
+      audio = false,
+      resolution = false,
+      errorHTML = '<p><strong>ERROR:</strong> ';
     if (!Modernizr.csstransforms || !Modernizr.cssanimations) {
       cssanimations = true;
       errorHTML += this.experiment.messages.errorCSSAnimations + '</p><br/>';
@@ -828,8 +1024,8 @@ var labclock = {
       errorHTML += this.experiment.messages.errorAudio + '</p><br/>';
       errorHTML += '<p>' + this.experiment.messages.recommendBrowser + '</p>';
     }
-		this.resolutionWidth = document.documentElement.clientWidth;
-		this.resolutioHeight = document.documentElement.clientHeight;
+    this.resolutionWidth = document.documentElement.clientWidth;
+    this.resolutioHeight = document.documentElement.clientHeight;
     if ((document.documentElement.clientWidth < 850) || (document.documentElement.clientHeight < 700)) {
       resolution = true;
       errorHTML += this.experiment.messages.errorResolution + '</p>';
@@ -841,10 +1037,10 @@ var labclock = {
     }
     return true;
   },
-  selectExperiment: function (r) {
+  selectExperiment: function(r) {
     var wrong = true,
-        selected,
-        options = [];
+      selected,
+      options = [];
     for (var property in window.experiment) {
       options.push(property);
     }
@@ -869,12 +1065,12 @@ var labclock = {
       }
     }
   },
-  start: function () {
+  start: function() {
     this.setButtonsListeners();
     this.selectExperiment(false); //set it to false to select the group manually
     this.state = this.STATE_PRE;
     this.displayState();
-    if(this.sanityChecks()) {
+    if (this.sanityChecks()) {
       this.initAudio();
       this.setClockListeners();
     }
