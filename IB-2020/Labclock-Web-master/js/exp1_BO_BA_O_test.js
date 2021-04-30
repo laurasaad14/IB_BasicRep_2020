@@ -13,7 +13,7 @@ experiment.W = {
   randomDelayMax: 1001,
   postResultsURL: 'datasave.php', //change this to whatever the server or host web address is
   postQuestionareResultsURL: 'questionairesave.php',
-  generateCSV: true, //change to true if you want a csv at the end - OK BUTTON DOESNT WORK WHEN THIS IS TRUE FOR SOME REASON
+  generateCSV: false, //change to true if you want a csv at the end - OK BUTTON DOESNT WORK WHEN THIS IS TRUE FOR SOME REASON
   responseKey: ' ',
   sounds: {
     demo: [{
