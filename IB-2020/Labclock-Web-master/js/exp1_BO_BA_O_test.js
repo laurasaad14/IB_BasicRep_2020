@@ -126,7 +126,7 @@ experiment.W = {
     progress: true,
     scramble: true,
     trials: [
-      /*
+      
                  { cycle: 2560 },
                  { cycle: 2560 },
                  { cycle: 2560 },
@@ -138,7 +138,7 @@ experiment.W = {
                  { cycle: 2560, response: 'text2' },
                  { cycle: 2560 },
                  { cycle: 2560 },
-                 */
+                 
     ],
     screen: {
       title: 'Instructions for Part 3',
@@ -158,7 +158,7 @@ experiment.W = {
     progress: true,
     scramble: true,
     trials: [
-      /*
+      
                 { cycle: 2560, tone: 250, response: 'outcome' },
                 { cycle: 2560, tone: 750, response: 'outcome' },
                 { cycle: 2560, tone: 250, response: 'outcome' },
@@ -176,7 +176,7 @@ experiment.W = {
                 { cycle: 2560, tone: 250 },
                 { cycle: 2560, tone: 750 },
                 { cycle: 2560, tone: 250 },
-                */
+                
     ],
     screen: {
       title: 'BREAK - Instructions Repeated',
@@ -196,7 +196,7 @@ experiment.W = {
     progress: true,
     scramble: true,
     trials: [
-      /*
+      
                { cycle: 2560, tone: 250, response: 'outcome' },
                { cycle: 2560, tone: 750, response: 'outcome' },
                { cycle: 2560, tone: 250, response: 'outcome' },
@@ -214,7 +214,7 @@ experiment.W = {
                { cycle: 2560, tone: 250 },
                { cycle: 2560, tone: 750 },
                { cycle: 2560, tone: 250 },
-               */
+               
     ],
     screen: {
       title: 'BREAK - Instructions Repeated',
@@ -234,7 +234,7 @@ experiment.W = {
     progress: true,
     scramble: true,
     trials: [
-      /*
+      
                 { cycle: 2560, tone: 250, response: 'outcome' },
                 { cycle: 2560, tone: 750, response: 'outcome' },
                 { cycle: 2560, tone: 250, response: 'outcome' },
@@ -252,7 +252,7 @@ experiment.W = {
                 { cycle: 2560, tone: 250 },
                 { cycle: 2560, tone: 750 },
                 { cycle: 2560, tone: 250 },
-                */
+                
     ],
     screen: {
       title: 'BREAK - Instructions Repeated',
@@ -272,7 +272,7 @@ experiment.W = {
     progress: true,
     scramble: true,
     trials: [
-      /*
+      
                 { cycle: 2560, tone: 250, response: 'outcome' },
                 { cycle: 2560, tone: 750, response: 'outcome' },
                 { cycle: 2560, tone: 250, response: 'outcome' },
@@ -290,7 +290,7 @@ experiment.W = {
                 { cycle: 2560, tone: 250 },
                 { cycle: 2560, tone: 750 },
                 { cycle: 2560, tone: 250 },
-                */
+                
     ],
     screen: {
       title: 'End of Experiment',
