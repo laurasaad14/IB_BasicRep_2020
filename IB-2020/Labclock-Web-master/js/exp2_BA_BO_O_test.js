@@ -98,7 +98,7 @@ experiment.X = {
     progress: true,
     scramble: true,
     trials: [
-      /*
+     
                 { cycle: 2560 },
                 { cycle: 2560 },
                 { cycle: 2560 },
@@ -110,7 +110,7 @@ experiment.X = {
                 { cycle: 2560 },
                 { cycle: 2560 },
                 { cycle: 2560 }
-               */
+               
     ],
     screen: {
       title: 'Instructions for Part 2',
@@ -121,7 +121,7 @@ experiment.X = {
     progress: true,
     scramble: true,
     trials: [
-      /*
+      
                {cycle: 2560, tone: Math.random() * (2560 - 1280) + 2560, nopress: true, response: 'outcome' },
                { cycle: 2560, tone: Math.random() * (2560 - 1280) + 2560, nopress: true, response: 'outcome' },
                { cycle: 2560, tone: Math.random() * (2560 - 1280) + 2560, nopress: true, response: 'text2' },
@@ -133,7 +133,7 @@ experiment.X = {
                { cycle: 2560, tone: Math.random() * (2560 - 1280) + 2560, nopress: true, response: 'outcome' },
                { cycle: 2560, tone: Math.random() * (2560 - 1280) + 2560, nopress: true, response: 'outcome' },
                { cycle: 2560, tone: Math.random() * (2560 - 1280) + 2560, nopress: true, response: 'outcome' }
-             */
+             
     ],
     screen: {
       title: 'Instructions for Part 3',
@@ -153,7 +153,7 @@ experiment.X = {
     progress: true,
     scramble: true,
     trials: [
-      /*
+      
               { cycle: 2560, tone: 250, response: 'outcome' },
               { cycle: 2560, tone: 750, response: 'outcome' },
               { cycle: 2560, tone: 250, response: 'outcome' },
@@ -171,7 +171,7 @@ experiment.X = {
               { cycle: 2560, tone: 250 },
               { cycle: 2560, tone: 750 },
               { cycle: 2560, tone: 250 },
-              */
+              
     ],
     screen: {
       title: 'BREAK - Instructions Repeated',
@@ -191,7 +191,7 @@ experiment.X = {
     progress: true,
     scramble: true,
     trials: [
-      /*
+      
               { cycle: 2560, tone: 250, response: 'outcome' },
               { cycle: 2560, tone: 750, response: 'outcome' },
               { cycle: 2560, tone: 250, response: 'outcome' },
@@ -209,7 +209,7 @@ experiment.X = {
               { cycle: 2560, tone: 250 },
               { cycle: 2560, tone: 750 },
               { cycle: 2560, tone: 250 },
-              */
+              
     ],
     screen: {
       title: 'BREAK - Instructions Repeated',
@@ -229,7 +229,7 @@ experiment.X = {
     progress: true,
     scramble: true,
     trials: [
-      /*
+      
               { cycle: 2560, tone: 250, response: 'outcome' },
               { cycle: 2560, tone: 750, response: 'outcome' },
               { cycle: 2560, tone: 250, response: 'outcome' },
@@ -247,7 +247,7 @@ experiment.X = {
               { cycle: 2560, tone: 250 },
               { cycle: 2560, tone: 750 },
               { cycle: 2560, tone: 250 },
-              */
+              
     ],
     screen: {
       title: 'BREAK - Instructions Repeated',
@@ -268,7 +268,7 @@ experiment.X = {
     progress: true,
     scramble: true,
     trials: [
-      /*
+      
               { cycle: 2560, tone: 250, response: 'outcome' },
               { cycle: 2560, tone: 750, response: 'outcome' },
               { cycle: 2560, tone: 250, response: 'outcome' },
@@ -286,7 +286,7 @@ experiment.X = {
               { cycle: 2560, tone: 250 },
               { cycle: 2560, tone: 750 },
               { cycle: 2560, tone: 250 },
-              */
+              
     ],
     screen: {
       title: 'End of Experiment',
